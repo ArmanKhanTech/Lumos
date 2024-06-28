@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:quill/quill.dart';
-import 'package:quill/utilities/utilities.dart';
+import 'package:quill/utility/utilities.dart';
 
 void main() {
   runApp(const MyApp());

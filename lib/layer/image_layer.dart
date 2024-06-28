@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 
 import '../data/layer.dart';
 import '../quill.dart';
-import '../modules/emoji_layer_overlay.dart';
+import '../module/image_layer_overlay.dart';
 
-class EmojiLayer extends StatefulWidget {
-  final EmojiLayerData layerData;
+class ImageLayer extends StatefulWidget {
+  final ImageLayerData layerData;
   final VoidCallback? onUpdate;
 
-  const EmojiLayer({
+  const ImageLayer({
     super.key,
     required this.layerData,
     this.onUpdate,
   });
 
   @override
-  createState() => _EmojiLayerState();
+  createState() => ImageLayerState();
 }
 
-class _EmojiLayerState extends State<EmojiLayer> {
+class ImageLayerState extends State<ImageLayer> {
   double initialSize = 0;
   double initialRotation = 0;
 
@@ -35,15 +35,15 @@ class _EmojiLayerState extends State<EmojiLayer> {
           showModalBottomSheet(
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20),
-                topLeft: Radius.circular(20),
+                topRight: Radius.circular(10),
+                topLeft: Radius.circular(10),
               ),
             ),
             context: context,
             builder: (context) {
-              return EmojiLayerOverlay(
+              return ImageLayerOverlay(
                 index: layers.indexOf(widget.layerData),
-                layer: widget.layerData,
+                layerData: widget.layerData,
                 onUpdate: () {
                   if (widget.onUpdate != null) widget.onUpdate!();
                   setState(() {});
@@ -59,21 +59,35 @@ class _EmojiLayerState extends State<EmojiLayer> {
               widget.layerData.offset.dy + detail.focalPointDelta.dy,
             );
           } else if (detail.pointerCount == 2) {
-            widget.layerData.size =
-                initialSize + detail.scale * 5 * (detail.scale > 1 ? 1 : -1);
+            widget.layerData.scale = detail.scale;
           }
 
           setState(() {});
         },
-        child: Transform.rotate(
-          angle: widget.layerData.rotation,
-          child: Container(
-            padding: const EdgeInsets.all(64),
-            child: Text(
-              widget.layerData.text.toString(),
-              style: TextStyle(
-                fontSize: widget.layerData.size,
-              ),
+        child: Transform(
+          transform: Matrix4(
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1 / widget.layerData.scale,
+          ),
+          child: SizedBox(
+            width: widget.layerData.image.width.toDouble(),
+            height: widget.layerData.image.height.toDouble(),
+            child: Image.memory(
+              widget.layerData.image.image,
             ),
           ),
         ),

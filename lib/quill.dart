@@ -21,16 +21,16 @@ import 'package:screenshot/screenshot.dart';
 
 import 'data/image_item.dart';
 import 'data/layer.dart';
-import 'layers/background_blur_layer.dart';
-import 'layers/background_layer.dart';
-import 'layers/emoji_layer.dart';
-import 'layers/image_layer.dart';
-import 'layers/text_layer.dart';
+import 'layer/background_blur_layer.dart';
+import 'layer/background_layer.dart';
+import 'layer/emoji_layer.dart';
+import 'layer/image_layer.dart';
+import 'layer/text_layer.dart';
 import 'widgets/loading_screen.dart';
-import 'modules/all_emojies.dart';
-import 'modules/color_picker.dart';
-import 'modules/text_overlay_screen.dart';
-import 'utilities/utilities.dart';
+import 'module/all_emojies.dart';
+import 'module/color_picker.dart';
+import 'module/text_overlay_screen.dart';
+import 'utility/utilities.dart';
 
 late Size viewportSize;
 

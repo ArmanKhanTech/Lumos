@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/layer.dart';
 import '../quill.dart';
-import '../modules/text_layer_overlay.dart';
+import '../module/text_layer_overlay.dart';
 
 class TextLayer extends StatefulWidget {
   final TextLayerData layerData;
