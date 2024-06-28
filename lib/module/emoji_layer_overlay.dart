@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quill/editor/single_image_editor.dart';
 
 import '../data/layer.dart';
-import '../quill.dart';
 
 class EmojiLayerOverlay extends StatefulWidget {
   final int index;
@@ -44,10 +44,10 @@ class _EmojiLayerOverlayState extends State<EmojiLayerOverlay> {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          Center(
+          const Center(
             child: Text(
-              i18n('Size Adjust'),
-              style: const TextStyle(
+              'Size Adjust',
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
               ),
@@ -84,9 +84,9 @@ class _EmojiLayerOverlayState extends State<EmojiLayerOverlay> {
                   // back(context);
                   // setState(() {});
                 },
-                child: Text(
-                  i18n('Remove'),
-                  style: const TextStyle(color: Colors.red, fontSize: 20),
+                child: const Text(
+                  'Remove',
+                  style: TextStyle(color: Colors.red, fontSize: 20),
                 ),
               ),
             ),

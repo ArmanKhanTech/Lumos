@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quill/editor/single_image_editor.dart';
 
 import '../data/layer.dart';
-import '../quill.dart';
 
 import 'color_picker.dart';
 
@@ -49,13 +49,13 @@ class _TextLayerOverlayState extends State<TextLayerOverlay> {
           const SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15),
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                i18n('Text Size'),
-                style: const TextStyle(
+                'Text Size',
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
@@ -86,10 +86,10 @@ class _TextLayerOverlayState extends State<TextLayerOverlay> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                i18n('Text Color'),
+              const Text(
+                'Text Color',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
@@ -117,17 +117,17 @@ class _TextLayerOverlayState extends State<TextLayerOverlay> {
                       widget.onUpdate();
                     });
                   },
-                  child: Text(i18n('Reset'),
-                      style: const TextStyle(
+                  child: const Text('Reset',
+                      style: TextStyle(
                         color: Colors.blue,
                         fontSize: 18,
                       )),
                 ),
               ]),
               const SizedBox(height: 10),
-              Text(
-                i18n('Text Background Color'),
-                style: const TextStyle(
+              const Text(
+                'Text Background Color',
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
@@ -155,9 +155,9 @@ class _TextLayerOverlayState extends State<TextLayerOverlay> {
                       widget.onUpdate();
                     });
                   },
-                  child: Text(
-                    i18n('Reset'),
-                    style: const TextStyle(
+                  child: const Text(
+                    'Reset',
+                    style: TextStyle(
                       color: Colors.blue,
                       fontSize: 18,
                     ),
@@ -167,13 +167,13 @@ class _TextLayerOverlayState extends State<TextLayerOverlay> {
             ]),
           ),
           const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(left: 15),
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                i18n('Text Background Opacity'),
-                style: const TextStyle(
+                'Text Background Opacity',
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
@@ -201,9 +201,9 @@ class _TextLayerOverlayState extends State<TextLayerOverlay> {
                   Navigator.pop(context);
                   widget.onUpdate();
                 },
-                child: Text(
-                  i18n('Remove'),
-                  style: const TextStyle(color: Colors.red, fontSize: 20),
+                child: const Text(
+                  'Remove',
+                  style: TextStyle(color: Colors.red, fontSize: 20),
                 ),
               ),
             ),

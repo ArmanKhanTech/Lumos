@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quill/editor/single_image_editor.dart';
 
 import '../data/layer.dart';
-import '../quill.dart';
 
 class ImageLayerOverlay extends StatefulWidget {
   final int index;
@@ -41,7 +41,7 @@ class _ImageLayerOverlayState extends State<ImageLayerOverlay> {
           const SizedBox(height: 10),
           Center(
             child: Text(
-              i18n('Size Adjust').toUpperCase(),
+              'Size Adjust'.toUpperCase(),
               style: const TextStyle(color: Colors.white),
             ),
           ),
@@ -75,9 +75,9 @@ class _ImageLayerOverlayState extends State<ImageLayerOverlay> {
                   Navigator.pop(context);
                   widget.onUpdate();
                 },
-                child: Text(
-                  i18n('Remove'),
-                  style: const TextStyle(color: Colors.white),
+                child: const Text(
+                  'Remove',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),

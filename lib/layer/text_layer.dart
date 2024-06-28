@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quill/editor/single_image_editor.dart';
 
 import '../data/layer.dart';
-import '../quill.dart';
 import '../module/text_layer_overlay.dart';
 
 class TextLayer extends StatefulWidget {

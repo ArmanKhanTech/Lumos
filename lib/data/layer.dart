@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'image_item.dart';
+import 'package:quill/editor/single_image_editor.dart';
 
 class Layer {
   late Offset offset;
@@ -34,16 +34,11 @@ class EmojiLayerData extends Layer {
   EmojiLayerData({
     this.text = '',
     this.size = 64,
-    Offset? offset,
-    double? opacity,
-    double? rotation,
-    double? scale,
-  }) : super(
-          offset: offset,
-          opacity: opacity,
-          rotation: rotation,
-          scale: scale,
-        );
+    super.offset,
+    super.opacity,
+    super.rotation,
+    super.scale,
+  });
 }
 
 class ImageLayerData extends Layer {
@@ -53,16 +48,11 @@ class ImageLayerData extends Layer {
   ImageLayerData({
     required this.image,
     this.size = 64,
-    Offset? offset,
-    double? opacity,
-    double? rotation,
-    double? scale,
-  }) : super(
-          offset: offset,
-          opacity: opacity,
-          rotation: rotation,
-          scale: scale,
-        );
+    super.offset,
+    super.opacity,
+    super.rotation,
+    super.scale,
+  });
 }
 
 class TextLayerData extends Layer {
@@ -79,16 +69,11 @@ class TextLayerData extends Layer {
     this.background = Colors.transparent,
     this.backgroundOpacity = 1,
     this.align = TextAlign.left,
-    Offset? offset,
-    double? opacity,
-    double? rotation,
-    double? scale,
-  }) : super(
-          offset: offset,
-          opacity: opacity,
-          rotation: rotation,
-          scale: scale,
-        );
+    super.offset,
+    super.opacity,
+    super.rotation,
+    super.scale,
+  });
 }
 
 class BackgroundBlurLayerData extends Layer {
@@ -98,14 +83,9 @@ class BackgroundBlurLayerData extends Layer {
   BackgroundBlurLayerData({
     required this.color,
     required this.radius,
-    Offset? offset,
-    double? opacity,
-    double? rotation,
-    double? scale,
-  }) : super(
-          offset: offset,
-          opacity: opacity,
-          rotation: rotation,
-          scale: scale,
-        );
+    super.offset,
+    super.opacity,
+    super.rotation,
+    super.scale,
+  });
 }

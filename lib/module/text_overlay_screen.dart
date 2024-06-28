@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../data/layer.dart';
-import '../quill.dart';
 
 import 'color_picker.dart';
 
@@ -35,9 +34,9 @@ class _TextEditorImageState extends State<TextEditorImage> {
           color: Colors.white,
           padding: const EdgeInsets.only(bottom: 3),
         ),
-        title: Text(
-          i18n('Text'),
-          style: const TextStyle(
+        title: const Text(
+          'Text',
+          style: TextStyle(
             color: Colors.white,
             fontSize: 30,
           ),
@@ -144,13 +143,13 @@ class _TextEditorImageState extends State<TextEditorImage> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        i18n('Text Size'),
-                        style: const TextStyle(
+                        'Text Size',
+                        style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                         ),
@@ -184,11 +183,11 @@ class _TextEditorImageState extends State<TextEditorImage> {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      i18n('Text Color'),
-                      style: const TextStyle(
+                      'Text Color',
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                       ),
@@ -216,19 +215,19 @@ class _TextEditorImageState extends State<TextEditorImage> {
                           currentColor = Colors.white;
                         });
                       },
-                      child: Text(i18n('Reset'),
-                          style: const TextStyle(
+                      child: const Text('Reset',
+                          style: TextStyle(
                             color: Colors.blue,
                             fontSize: 18,
                           )),
                     ),
                   ]),
                   const SizedBox(height: 10.0),
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      i18n('Black/White Color'),
-                      style: const TextStyle(
+                      'Black/White Color',
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                       ),
@@ -256,8 +255,8 @@ class _TextEditorImageState extends State<TextEditorImage> {
                             currentColor = const Color(0xFFFFFFFF);
                           });
                         },
-                        child: Text(i18n('Reset'),
-                            style: const TextStyle(
+                        child: const Text('Reset',
+                            style: TextStyle(
                               color: Colors.blue,
                               fontSize: 18,
                             ))),
