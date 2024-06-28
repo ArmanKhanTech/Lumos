@@ -1,11 +1,8 @@
-import 'dart:io';
-
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:quill/editor/single_image_editor.dart';
 import 'package:quill/utility/utilities.dart';
 
@@ -54,7 +51,7 @@ class MultiImageEditor extends StatefulWidget {
 
 class MultiImageEditorState extends State<MultiImageEditor> {
   List<ImageItem> images = [];
-  List<File> saveImages = [];
+  List<Uint8List> saveImages = [];
 
   int index = 0;
 
@@ -171,22 +168,17 @@ class MultiImageEditorState extends State<MultiImageEditor> {
             padding: const EdgeInsets.only(left: 10, right: 22),
             icon: const Icon(Icons.done, color: Colors.white, size: 30),
             onPressed: () async {
-              final tempDir = await getTemporaryDirectory();
               for (int i = 0; i < images.length; i++) {
                 final Uint8List? result = await cropImageDataWithNativeLibrary(
                   state: editorKey[i].currentState!,
                 );
                 if (result == null) {
                   return;
+                } else {
+                  saveImages.add(result);
                 }
-                images[i].load(result);
-                File media = await File(
-                        '${tempDir.path}/divine${DateTime.timestamp()}image[$i].png')
-                    .create();
-                media.writeAsBytesSync(images[i].image);
-                saveImages.add(media);
               }
-              // push back to the previous screen
+              Navigator.of(context).pop(saveImages);
             },
           ),
         ],

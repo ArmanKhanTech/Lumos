@@ -17,8 +17,6 @@ dependencies:
   font_awesome_flutter: ^10.5.0
   flutter_image_compress: ^2.0.4
   colorfilter_generator: ^0.0.8
-  path: ^1.8.0
-  path_provider: ^2.0.15
   extended_image: ^8.1.1
   image: ^4.0.17
   image_editor: ^1.3.0

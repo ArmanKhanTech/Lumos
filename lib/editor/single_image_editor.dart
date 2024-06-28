@@ -8,7 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:quill/tool/image_filters.dart';
 import 'package:quill/widget/bottom_button.dart';
 import 'package:screenshot/screenshot.dart';
@@ -363,22 +362,7 @@ class SingleImageEditorState extends State<SingleImageEditor> {
                 LoadingScreen(scaffoldGlobalKey).hide();
 
                 if (mounted) {
-                  if (!widget.multiImages) {
-                    final convertedImage = await ImageUtils.convert(
-                      binaryIntList!,
-                      format: 'png',
-                      quality: 75,
-                    );
-
-                    final tempDir = await getTemporaryDirectory();
-                    File media = await File(
-                            '${tempDir.path}/divine${DateTime.timestamp()}image.png')
-                        .create();
-                    media.writeAsBytesSync(convertedImage);
-                    // push back to the previous screen
-                  } else {
-                    Navigator.of(context).pop(binaryIntList);
-                  }
+                  Navigator.of(context).pop(binaryIntList);
                 }
               },
             ),
