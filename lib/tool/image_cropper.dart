@@ -1,14 +1,17 @@
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
-import 'package:quill/data/theme.dart';
+
+import 'package:quill/data/constants.dart';
 import 'package:quill/utility/utilities.dart';
 
 class ImageCropper extends StatefulWidget {
   final Uint8List image;
+
   final List<AspectRatioOption> availableRatios;
+
+  final bool darkTheme;
 
   const ImageCropper({
     super.key,
@@ -21,14 +24,15 @@ class ImageCropper extends StatefulWidget {
       AspectRatioOption(title: '7:5', ratio: 7 / 5),
       AspectRatioOption(title: '16:9', ratio: 16 / 9),
     ],
+    required this.darkTheme,
   });
 
   @override
-  createState() => ImageCropperState();
+  State<ImageCropper> createState() => _ImageCropperState();
 }
 
-class ImageCropperState extends State<ImageCropper> {
-  final GlobalKey<ExtendedImageEditorState> _controller =
+class _ImageCropperState extends State<ImageCropper> {
+  final GlobalKey<ExtendedImageEditorState> controller =
       GlobalKey<ExtendedImageEditorState>();
 
   double? aspectRatio;
@@ -40,164 +44,163 @@ class ImageCropperState extends State<ImageCropper> {
 
   @override
   void initState() {
+    super.initState();
     if (widget.availableRatios.isNotEmpty) {
       aspectRatio = aspectRatioOriginal = 1;
     }
-    _controller.currentState?.rotate(right: true);
-    super.initState();
+    controller.currentState?.rotate(right: true);
   }
 
+  // TODO: Fix text color
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(CupertinoIcons.chevron_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          iconSize: 30.0,
-          color: Colors.white,
-          padding: const EdgeInsets.only(bottom: 3),
-        ),
-        title: const Text(
-          'Crop',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-          ),
-        ),
-        backgroundColor: Colors.black,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.black,
-          statusBarIconBrightness: Brightness.light,
-          systemNavigationBarColor: Colors.black,
-          systemNavigationBarIconBrightness: Brightness.light,
-        ),
-        actions: [
-          IconButton(
-            padding: const EdgeInsets.only(
-              left: 10,
-              right: 22,
+    return Theme(
+        data: widget.darkTheme ? Constants.darkTheme : Constants.lightTheme,
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              iconSize: 30.0,
+              color: widget.darkTheme ? Colors.white : Colors.black,
+              padding: const EdgeInsets.only(bottom: 3),
             ),
-            icon: const Icon(Icons.check, size: 30, color: Colors.white),
-            onPressed: () async {
-              var state = _controller.currentState;
-              if (state == null) {
-                return;
-              }
-
-              var data = await cropImageDataWithNativeLibrary(state: state);
-              if (mounted) {
-                Navigator.pop(context, data);
-              }
-            },
-          ),
-        ],
-      ),
-      backgroundColor: Colors.black,
-      body: Theme(
-        data: Constants.lightTheme,
-        child: Container(
-          color: Colors.black,
-          child: ExtendedImage.memory(
-            widget.image,
-            cacheRawData: true,
-            fit: BoxFit.contain,
-            extendedImageEditorKey: _controller,
-            mode: ExtendedImageMode.editor,
-            initEditorConfigHandler: (state) {
-              return EditorConfig(
-                cornerColor: Colors.white,
-                cropAspectRatio: aspectRatio,
-                lineColor: Colors.white,
-              );
-            },
-          ),
-        ),
-      ),
-      bottomNavigationBar: SafeArea(
-        child: SizedBox(
-          height: 80,
-          child: Column(
-            children: [
-              Container(
-                height: 80,
-                decoration: const BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 10,
-                    ),
-                  ],
+            title: Text(
+              'Crop',
+              style: TextStyle(
+                color: widget.darkTheme ? Colors.white : Colors.black,
+                fontSize: 20,
+              ),
+            ),
+            actions: [
+              IconButton(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  right: 22,
                 ),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      if (aspectRatioOriginal != null &&
-                          aspectRatioOriginal != 1)
-                        IconButton(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          icon: Icon(
-                            Icons.portrait,
-                            size: 25,
-                            color: isLandscape ? Colors.grey : Colors.white,
-                          ),
-                          onPressed: () {
-                            isLandscape = false;
-                            if (aspectRatioOriginal != null) {
-                              aspectRatio = 1 / aspectRatioOriginal!;
-                            }
+                icon: Icon(Icons.check,
+                    size: 30,
+                    color: widget.darkTheme ? Colors.white : Colors.black),
+                onPressed: () async {
+                  var state = controller.currentState;
+                  if (state == null) {
+                    return;
+                  }
 
-                            setState(() {});
-                          },
-                        ),
-                      if (aspectRatioOriginal != null &&
-                          aspectRatioOriginal != 1)
-                        IconButton(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          icon: Icon(
-                            Icons.landscape,
-                            size: 25,
-                            color: isLandscape ? Colors.white : Colors.grey,
-                          ),
-                          onPressed: () {
-                            isLandscape = true;
-                            aspectRatio = aspectRatioOriginal!;
-
-                            setState(() {});
-                          },
-                        ),
-                      for (var ratio in widget.availableRatios)
-                        imageRatioButton(ratio.ratio, ratio.title),
-                    ],
-                  ),
-                ),
+                  var data = await cropImageDataWithNativeLibrary(state: state);
+                  if (mounted) {
+                    Navigator.pop(context, data);
+                  }
+                },
               ),
             ],
           ),
-        ),
-      ),
-    );
+          body: SizedBox(
+            child: ExtendedImage.memory(
+              widget.image,
+              cacheRawData: true,
+              fit: BoxFit.contain,
+              extendedImageEditorKey: controller,
+              mode: ExtendedImageMode.editor,
+              initEditorConfigHandler: (state) {
+                return EditorConfig(
+                  cornerColor: widget.darkTheme ? Colors.white : Colors.black,
+                  cropAspectRatio: aspectRatio,
+                  lineColor: widget.darkTheme ? Colors.white : Colors.black,
+                );
+              },
+            ),
+          ),
+          bottomNavigationBar: SafeArea(
+            child: SizedBox(
+              height: 80,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 80,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          if (aspectRatioOriginal != null &&
+                              aspectRatioOriginal != 1)
+                            IconButton(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              icon: Icon(
+                                Icons.portrait,
+                                size: 25,
+                                color: isLandscape
+                                    ? widget.darkTheme
+                                        ? Colors.white
+                                        : Colors.black
+                                    : Colors.grey,
+                              ),
+                              onPressed: () {
+                                isLandscape = false;
+                                if (aspectRatioOriginal != null) {
+                                  aspectRatio = 1 / aspectRatioOriginal!;
+                                }
+
+                                setState(() {});
+                              },
+                            ),
+                          if (aspectRatioOriginal != null &&
+                              aspectRatioOriginal != 1)
+                            IconButton(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              icon: Icon(
+                                Icons.landscape,
+                                size: 25,
+                                color: isLandscape
+                                    ? widget.darkTheme
+                                        ? Colors.white
+                                        : Colors.black
+                                    : Colors.grey,
+                              ),
+                              onPressed: () {
+                                isLandscape = true;
+                                aspectRatio = aspectRatioOriginal!;
+
+                                setState(() {});
+                              },
+                            ),
+                          for (var ratio in widget.availableRatios)
+                            imageRatioButton(
+                                ratio.ratio, ratio.title, widget.darkTheme),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
   }
 
   Future<Uint8List?> cropImageDataWithNativeLibrary(
       {required ExtendedImageEditorState state}) async {
     final Rect? cropRect = state.getCropRect();
+
     final EditActionDetails action = state.editAction!;
+
     final int rotateAngle = action.rotateAngle.toInt();
+
     final bool flipHorizontal = action.flipY;
     final bool flipVertical = action.flipX;
+
     final Uint8List img = state.rawImageData;
+
     final option = ImageEditorOption();
 
     if (action.needCrop) {
@@ -221,7 +224,7 @@ class ImageCropperState extends State<ImageCropper> {
     return result;
   }
 
-  Widget imageRatioButton(double? ratio, String title) {
+  Widget imageRatioButton(double? ratio, String title, bool darkTheme) {
     return TextButton(
       onPressed: () {
         aspectRatioOriginal = ratio;
@@ -239,7 +242,11 @@ class ImageCropperState extends State<ImageCropper> {
             title,
             style: TextStyle(
               fontSize: 20,
-              color: aspectRatioOriginal == ratio ? Colors.white : Colors.grey,
+              color: aspectRatioOriginal == ratio
+                  ? darkTheme
+                      ? Colors.white
+                      : Colors.black
+                  : Colors.grey,
             ),
           )),
     );

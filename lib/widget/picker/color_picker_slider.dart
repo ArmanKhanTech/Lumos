@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'color_picker.dart';
 
-class ColorPickersSlider extends StatefulWidget {
-  const ColorPickersSlider({super.key});
+class ColorPickerSlider extends StatefulWidget {
+  const ColorPickerSlider({super.key});
 
   @override
-  createState() => _ColorPickersSliderState();
+  createState() => _ColorPickerSliderState();
 }
 
-class _ColorPickersSliderState extends State<ColorPickersSlider> {
+class _ColorPickerSliderState extends State<ColorPickerSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -8,8 +8,8 @@ enum PickMode {
 
 typedef ColorListener = void Function(int value);
 
-const _kThumbShadowColor = Color(0x44000000);
-const _kBarPadding = 4;
+const kThumbShadowColor = Color(0x44000000);
+const kBarPadding = 4;
 
 class BarColorPicker extends StatefulWidget {
   final PickMode pickMode;
@@ -51,9 +51,9 @@ class _BarColorPickerState extends State<BarColorPicker> {
     super.initState();
     if (widget.horizontal) {
       barWidth = widget.width;
-      barHeight = widget.thumbRadius * 2 - _kBarPadding;
+      barHeight = widget.thumbRadius * 2 - kBarPadding;
     } else {
-      barWidth = widget.thumbRadius * 2 - _kBarPadding;
+      barWidth = widget.thumbRadius * 2 - kBarPadding;
       barHeight = widget.width;
     }
 
@@ -99,7 +99,7 @@ class _BarColorPickerState extends State<BarColorPicker> {
           borderRadius: BorderRadius.circular(30),
           boxShadow: const [
             BoxShadow(
-              color: _kThumbShadowColor,
+              color: kThumbShadowColor,
               spreadRadius: 2,
               blurRadius: 3,
             )
@@ -251,7 +251,7 @@ class _CircleColorPickerState extends State<CircleColorPicker> {
           decoration: BoxDecoration(
             boxShadow: const [
               BoxShadow(
-                color: _kThumbShadowColor,
+                color: kThumbShadowColor,
                 spreadRadius: 2,
                 blurRadius: 3,
               )

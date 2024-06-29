@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:quill/editor/single_image_editor.dart';
+import 'package:quill/widget/dialog/image_layer_dialog.dart';
 
 import '../data/layer.dart';
-import '../module/image_layer_overlay.dart';
 
 class ImageLayer extends StatefulWidget {
   final ImageLayerData layerData;
@@ -41,7 +42,7 @@ class ImageLayerState extends State<ImageLayer> {
             ),
             context: context,
             builder: (context) {
-              return ImageLayerOverlay(
+              return ImageLayerDialog(
                 index: layers.indexOf(widget.layerData),
                 layerData: widget.layerData,
                 onUpdate: () {

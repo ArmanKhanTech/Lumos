@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 class BottomButton extends StatelessWidget {
   final VoidCallback? onTap, onLongPress;
+
   final IconData icon;
+
   final String text;
+
+  final bool darkTheme;
 
   const BottomButton({
     super.key,
@@ -11,6 +15,7 @@ class BottomButton extends StatelessWidget {
     this.onLongPress,
     required this.icon,
     required this.text,
+    required this.darkTheme,
   });
 
   @override
@@ -27,15 +32,16 @@ class BottomButton extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Icon(icon, color: Colors.white, size: 30),
+            Icon(icon,
+                color: darkTheme ? Colors.white : Colors.black, size: 30),
             const SizedBox(
-              height: 4,
+              height: 2,
             ),
             Text(
               text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
+              style: TextStyle(
+                color: darkTheme ? Colors.white : Colors.black,
+                fontSize: 15,
               ),
             ),
           ],

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:quill/editor/single_image_editor.dart';
 
-import '../data/layer.dart';
+import '../../data/layer.dart';
 
-class ImageLayerOverlay extends StatefulWidget {
+class ImageLayerDialog extends StatefulWidget {
   final int index;
   final ImageLayerData layerData;
   final Function onUpdate;
 
-  const ImageLayerOverlay({
+  const ImageLayerDialog({
     super.key,
     required this.layerData,
     required this.index,
@@ -16,10 +16,10 @@ class ImageLayerOverlay extends StatefulWidget {
   });
 
   @override
-  createState() => _ImageLayerOverlayState();
+  createState() => _ImageLayerDialogState();
 }
 
-class _ImageLayerOverlayState extends State<ImageLayerOverlay> {
+class _ImageLayerDialogState extends State<ImageLayerDialog> {
   double slider = 0.0;
 
   @override

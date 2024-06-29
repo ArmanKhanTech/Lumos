@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:quill/editor/single_image_editor.dart';
 
 import '../data/layer.dart';
-import '../module/emoji_layer_overlay.dart';
+import '../widget/dialog/emoji_layer_dialog.dart';
 
 class EmojiLayer extends StatefulWidget {
   final EmojiLayerData layerData;
+
   final VoidCallback? onUpdate;
+
+  final bool darkTheme;
 
   const EmojiLayer({
     super.key,
     required this.layerData,
     this.onUpdate,
+    required this.darkTheme,
   });
 
   @override
@@ -33,17 +37,12 @@ class _EmojiLayerState extends State<EmojiLayer> {
       child: GestureDetector(
         onTap: () {
           showModalBottomSheet(
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20),
-                topLeft: Radius.circular(20),
-              ),
-            ),
             context: context,
             builder: (context) {
-              return EmojiLayerOverlay(
+              return EmojiLayerDialog(
                 index: layers.indexOf(widget.layerData),
                 layer: widget.layerData,
+                darkTheme: widget.darkTheme,
                 onUpdate: () {
                   if (widget.onUpdate != null) widget.onUpdate!();
                   setState(() {});

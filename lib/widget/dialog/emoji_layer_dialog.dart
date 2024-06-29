@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:quill/editor/single_image_editor.dart';
 
-import '../data/layer.dart';
+import '../../data/layer.dart';
 
-class EmojiLayerOverlay extends StatefulWidget {
+class EmojiLayerDialog extends StatefulWidget {
   final int index;
+
   final EmojiLayerData layer;
+
   final Function onUpdate;
 
-  const EmojiLayerOverlay({
+  final bool darkTheme;
+
+  const EmojiLayerDialog({
     super.key,
     required this.layer,
     required this.index,
     required this.onUpdate,
+    required this.darkTheme,
   });
 
   @override
-  createState() => _EmojiLayerOverlayState();
+  createState() => _EmojiLayerDialogState();
 }
 
-class _EmojiLayerOverlayState extends State<EmojiLayerOverlay> {
+class _EmojiLayerDialogState extends State<EmojiLayerDialog> {
   double slider = 0.0;
 
   @override
@@ -29,33 +34,24 @@ class _EmojiLayerOverlayState extends State<EmojiLayerOverlay> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 180,
-      decoration: const BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-          border: Border(
-            top: BorderSide(width: 1, color: Colors.white),
-            bottom: BorderSide(width: 0, color: Colors.white),
-            left: BorderSide(width: 0, color: Colors.white),
-            right: BorderSide(width: 0, color: Colors.white),
-          )),
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const Center(
+          Center(
             child: Text(
               'Size Adjust',
               style: TextStyle(
-                color: Colors.white,
+                color: widget.darkTheme ? Colors.white : Colors.black,
                 fontSize: 18,
               ),
             ),
           ),
           Slider(
-              activeColor: Colors.white,
+              activeColor: widget.darkTheme ? Colors.white : Colors.black,
               inactiveColor: Colors.grey,
+              thumbColor: widget.darkTheme ? Colors.white : Colors.black,
               value: widget.layer.size,
               min: 0.0,
               max: 100.0,
@@ -68,7 +64,6 @@ class _EmojiLayerOverlayState extends State<EmojiLayerOverlay> {
               onChanged: (v) {
                 setState(() {
                   slider = v;
-                  // print(v.toDouble());
                   widget.layer.size = v.toDouble();
                   widget.onUpdate();
                 });
@@ -81,12 +76,10 @@ class _EmojiLayerOverlayState extends State<EmojiLayerOverlay> {
                   removedLayers.add(layers.removeAt(widget.index));
                   Navigator.pop(context);
                   widget.onUpdate();
-                  // back(context);
-                  // setState(() {});
                 },
                 child: const Text(
                   'Remove',
-                  style: TextStyle(color: Colors.red, fontSize: 20),
+                  style: TextStyle(color: Colors.red, fontSize: 18),
                 ),
               ),
             ),

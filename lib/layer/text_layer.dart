@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:quill/editor/single_image_editor.dart';
+import 'package:quill/widget/dialog/text_layer_dialog.dart';
 
 import '../data/layer.dart';
-import '../module/text_layer_overlay.dart';
 
 class TextLayer extends StatefulWidget {
   final TextLayerData layerData;
@@ -45,7 +46,7 @@ class _TextViewState extends State<TextLayer> {
                     child: Container(
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: TextLayerOverlay(
+                  child: TextLayerDialog(
                     index: layers.indexOf(widget.layerData),
                     layer: widget.layerData,
                     onUpdate: () {

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:quill/editor/single_image_editor.dart';
 
-import '../data/layer.dart';
+import '../../data/layer.dart';
+import '../picker/color_picker.dart';
 
-import 'color_picker.dart';
-
-class TextLayerOverlay extends StatefulWidget {
+class TextLayerDialog extends StatefulWidget {
   final int index;
   final TextLayerData layer;
   final Function onUpdate;
 
-  const TextLayerOverlay({
+  const TextLayerDialog({
     super.key,
     required this.layer,
     required this.index,
@@ -18,10 +17,10 @@ class TextLayerOverlay extends StatefulWidget {
   });
 
   @override
-  createState() => _TextLayerOverlayState();
+  createState() => _TextLayerDialogState();
 }
 
-class _TextLayerOverlayState extends State<TextLayerOverlay> {
+class _TextLayerDialogState extends State<TextLayerDialog> {
   double slider = 0.0;
 
   @override

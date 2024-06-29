@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quill/editor/single_image_editor.dart';
+import 'package:quill/utility/image_item.dart';
 
 class Layer {
   late Offset offset;

@@ -3,22 +3,27 @@ import 'package:colorfilter_generator/colorfilter_generator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quill/widget/bottom_button.dart';
 import 'package:screenshot/screenshot.dart';
+
+import 'package:quill/data/constants.dart';
+import 'package:quill/widget/button/bottom_button.dart';
 
 class ImageAdjust extends StatefulWidget {
   final Uint8List image;
 
+  final bool darkTheme;
+
   const ImageAdjust({
     super.key,
     required this.image,
+    required this.darkTheme,
   });
 
   @override
-  createState() => ImageAdjustState();
+  State<ImageAdjust> createState() => _ImageAdjustState();
 }
 
-class ImageAdjustState extends State<ImageAdjust> {
+class _ImageAdjustState extends State<ImageAdjust> {
   ScreenshotController screenshotController = ScreenshotController();
 
   Uint8List adjustedImage = Uint8List.fromList([]);
@@ -39,148 +44,149 @@ class ImageAdjustState extends State<ImageAdjust> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(CupertinoIcons.chevron_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          iconSize: 30.0,
-          color: Colors.white,
-          padding: const EdgeInsets.only(bottom: 3),
-        ),
-        title: const Text(
-          'Adjust',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-          ),
-        ),
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.black,
-          statusBarIconBrightness: Brightness.light,
-          systemNavigationBarColor: Colors.black,
-          systemNavigationBarIconBrightness: Brightness.light,
-        ),
-        backgroundColor: Colors.black,
-        actions: [
-          IconButton(
-            padding: const EdgeInsets.only(
-              left: 10,
-              right: 22,
+    return Theme(
+        data: widget.darkTheme ? Constants.darkTheme : Constants.lightTheme,
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: widget.darkTheme ? Colors.white : Colors.black,
+              iconSize: 30.0,
+              padding: const EdgeInsets.only(bottom: 3),
             ),
-            icon: const Icon(Icons.check, size: 30, color: Colors.white),
-            onPressed: () async {
-              var data = await screenshotController.capture();
-              if (mounted) Navigator.pop(context, data);
-            },
-          ),
-        ],
-      ),
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Screenshot(
-          controller: screenshotController,
-          child: Stack(
-            children: [
-              ColorFiltered(
-                colorFilter: ColorFilter.matrix(myFilter.matrix),
-                child: Image.memory(
-                  widget.image,
-                  fit: BoxFit.contain,
+            title: Text(
+              'Adjust',
+              style: TextStyle(
+                fontSize: 20,
+                color: widget.darkTheme ? Colors.white : Colors.black,
+              ),
+            ),
+            actions: [
+              IconButton(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  right: 22,
                 ),
+                color: widget.darkTheme ? Colors.white : Colors.black,
+                icon: const Icon(Icons.check, size: 30),
+                onPressed: () async {
+                  var data = await screenshotController.capture();
+                  if (mounted) Navigator.pop(context, data);
+                },
               ),
             ],
           ),
-        ),
-      ),
-      bottomNavigationBar: SizedBox(
-        height: 105,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const SizedBox(height: 10),
-            SizedBox(
-              height: 20,
-              child: Slider(
-                min: 0.0,
-                max: 1.0,
-                value: current,
-                activeColor: Colors.white,
-                inactiveColor: Colors.grey,
-                thumbColor: Colors.white,
-                onChanged: (value) {
-                  current = value;
-                  if (currentFilter == 'Brightness') {
-                    brightness = value;
-                    myFilter =
-                        ColorFilterGenerator(name: "CustomFilter", filters: [
-                      ColorFilterAddons.brightness(brightness),
-                      ColorFilterAddons.contrast(contrast),
-                      ColorFilterAddons.saturation(saturation),
-                    ]);
-                  } else if (currentFilter == 'Contrast') {
-                    contrast = value;
-                    myFilter =
-                        ColorFilterGenerator(name: "CustomFilter", filters: [
-                      ColorFilterAddons.brightness(brightness),
-                      ColorFilterAddons.contrast(contrast),
-                      ColorFilterAddons.saturation(saturation),
-                    ]);
-                  } else if (currentFilter == 'Saturation') {
-                    saturation = value;
-                    myFilter =
-                        ColorFilterGenerator(name: "CustomFilter", filters: [
-                      ColorFilterAddons.brightness(brightness),
-                      ColorFilterAddons.contrast(contrast),
-                      ColorFilterAddons.saturation(saturation),
-                    ]);
-                  }
-                  setState(() {});
-                },
+          body: Center(
+            child: Screenshot(
+              controller: screenshotController,
+              child: Stack(
+                children: [
+                  ColorFiltered(
+                    colorFilter: ColorFilter.matrix(myFilter.matrix),
+                    child: Image.memory(
+                      widget.image,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 10),
-            Row(
+          ),
+          bottomNavigationBar: SizedBox(
+            height: 105,
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                BottomButton(
-                  icon: CupertinoIcons.brightness,
-                  text: 'Brightness',
-                  onTap: () async {
-                    setState(() {
-                      current = brightness;
-                      currentFilter = 'Brightness';
-                    });
-                  },
+              children: <Widget>[
+                const SizedBox(height: 10),
+                SizedBox(
+                  height: 20,
+                  child: Slider(
+                    min: 0.0,
+                    max: 1.0,
+                    value: current,
+                    activeColor: widget.darkTheme ? Colors.white : Colors.black,
+                    inactiveColor: Colors.grey,
+                    thumbColor: widget.darkTheme ? Colors.white : Colors.black,
+                    onChanged: (value) {
+                      current = value;
+                      if (currentFilter == 'Brightness') {
+                        brightness = value;
+                        myFilter = ColorFilterGenerator(
+                            name: "CustomFilter",
+                            filters: [
+                              ColorFilterAddons.brightness(brightness),
+                              ColorFilterAddons.contrast(contrast),
+                              ColorFilterAddons.saturation(saturation),
+                            ]);
+                      } else if (currentFilter == 'Contrast') {
+                        contrast = value;
+                        myFilter = ColorFilterGenerator(
+                            name: "CustomFilter",
+                            filters: [
+                              ColorFilterAddons.brightness(brightness),
+                              ColorFilterAddons.contrast(contrast),
+                              ColorFilterAddons.saturation(saturation),
+                            ]);
+                      } else if (currentFilter == 'Saturation') {
+                        saturation = value;
+                        myFilter = ColorFilterGenerator(
+                            name: "CustomFilter",
+                            filters: [
+                              ColorFilterAddons.brightness(brightness),
+                              ColorFilterAddons.contrast(contrast),
+                              ColorFilterAddons.saturation(saturation),
+                            ]);
+                      }
+                      setState(() {});
+                    },
+                  ),
                 ),
-                BottomButton(
-                  icon: Icons.contrast,
-                  text: 'Contrast',
-                  onTap: () async {
-                    setState(() {
-                      current = contrast / 100;
-                      currentFilter = 'Contrast';
-                    });
-                  },
-                ),
-                BottomButton(
-                  icon: CupertinoIcons.circle_grid_hex,
-                  text: 'Saturation',
-                  onTap: () async {
-                    setState(() {
-                      current = saturation;
-                      currentFilter = 'Saturation';
-                    });
-                  },
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BottomButton(
+                      icon: CupertinoIcons.brightness,
+                      text: 'Brightness',
+                      darkTheme: widget.darkTheme,
+                      onTap: () async {
+                        setState(() {
+                          current = brightness;
+                          currentFilter = 'Brightness';
+                        });
+                      },
+                    ),
+                    BottomButton(
+                      icon: Icons.contrast,
+                      text: 'Contrast',
+                      darkTheme: widget.darkTheme,
+                      onTap: () async {
+                        setState(() {
+                          current = contrast;
+                          currentFilter = 'Contrast';
+                        });
+                      },
+                    ),
+                    BottomButton(
+                      icon: CupertinoIcons.circle_grid_hex,
+                      text: 'Saturation',
+                      darkTheme: widget.darkTheme,
+                      onTap: () async {
+                        setState(() {
+                          current = saturation;
+                          currentFilter = 'Saturation';
+                        });
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }

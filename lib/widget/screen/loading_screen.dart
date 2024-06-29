@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:quill/widget/progress_indicator.dart';
+import 'package:quill/widget/indicator/progress_indicator.dart';
 
 class LoadingScreen {
   final GlobalKey globalKey;
 
-  LoadingScreen(this.globalKey);
+  final bool darkTheme;
+
+  // TODO: Implement factory
+  LoadingScreen(this.globalKey, this.darkTheme);
 
   show([String? text]) {
     if (globalKey.currentContext == null) {
@@ -14,11 +17,13 @@ class LoadingScreen {
     showDialog<String>(
         context: globalKey.currentContext!,
         builder: (BuildContext context) => Scaffold(
-              backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
+              backgroundColor: darkTheme
+                  ? Colors.black.withOpacity(0.9)
+                  : Colors.white.withOpacity(0.9),
               body: Center(
                 child: circularProgress(
                   context,
-                  const Color(0XFF03A9F4),
+                  darkTheme ? Colors.white : Colors.black,
                 ),
               ),
             ));

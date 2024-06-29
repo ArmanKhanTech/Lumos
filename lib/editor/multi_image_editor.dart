@@ -3,29 +3,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
+
+import 'package:quill/data/constants.dart';
 import 'package:quill/editor/single_image_editor.dart';
+import 'package:quill/utility/image_item.dart';
 import 'package:quill/utility/utilities.dart';
 
 import '../tool/image_filters.dart';
 
 class MultiImageEditor extends StatefulWidget {
-  final List images;
+  final List<dynamic> images;
   final List<AspectRatioOption> cropAvailableRatios;
 
   final int maxLength;
-  final bool allowGallery, allowCamera, allowMultiple;
+
   final ImageEditorFeatures features;
+
+  final Size viewportSize;
+
+  final bool darkTheme;
+
+  final EditorBackground background;
 
   const MultiImageEditor({
     super.key,
     this.images = const [],
-    @Deprecated('Use features instead') this.allowCamera = false,
-    @Deprecated('Use features instead') this.allowGallery = false,
-    this.allowMultiple = false,
-    this.maxLength = 99,
+    this.maxLength = 10,
     this.features = const ImageEditorFeatures(
-      pickFromGallery: true,
-      captureFromCamera: true,
       crop: true,
       blur: true,
       brush: true,
@@ -43,6 +47,9 @@ class MultiImageEditor extends StatefulWidget {
       AspectRatioOption(title: '7:5', ratio: 7 / 5),
       AspectRatioOption(title: '16:9', ratio: 16 / 9),
     ],
+    required this.viewportSize,
+    required this.darkTheme,
+    required this.background,
   });
 
   @override
@@ -52,6 +59,7 @@ class MultiImageEditor extends StatefulWidget {
 class MultiImageEditorState extends State<MultiImageEditor> {
   List<ImageItem> images = [];
   List<Uint8List> saveImages = [];
+  List<GlobalKey<ExtendedImageEditorState>> editorKey = [];
 
   int index = 0;
 
@@ -70,17 +78,15 @@ class MultiImageEditorState extends State<MultiImageEditor> {
 
   int rotateAngle = 0;
 
-  List<GlobalKey<ExtendedImageEditorState>> editorKey = [];
-
   @override
   void initState() {
-    images = widget.images.map((e) => ImageItem(e)).toList();
+    super.initState();
+    images =
+        widget.images.map((e) => ImageItem(e, widget.viewportSize)).toList();
     aspectRatio = aspectRatioOriginal = 1;
     for (int i = 0; i < images.length; i++) {
       editorKey.add(GlobalKey<ExtendedImageEditorState>());
     }
-
-    super.initState();
   }
 
   @override
@@ -112,11 +118,16 @@ class MultiImageEditorState extends State<MultiImageEditor> {
     Future<Uint8List?> cropImageDataWithNativeLibrary(
         {required ExtendedImageEditorState state}) async {
       final Rect? cropRect = state.getCropRect();
+
       final EditActionDetails action = state.editAction!;
+
       final int rotateAngle = action.rotateAngle.toInt();
+
       final bool flipHorizontal = action.flipY;
       final bool flipVertical = action.flipX;
+
       final Uint8List img = state.rawImageData;
+
       final option = ImageEditorOption();
 
       if (action.needCrop) {
@@ -218,13 +229,15 @@ class MultiImageEditorState extends State<MultiImageEditor> {
                                     context,
                                     CupertinoPageRoute(
                                       builder: (context) => SingleImageEditor(
-                                        image: image,
-                                        multiImages: true,
-                                      ),
+                                          image: image,
+                                          viewportSize: widget.viewportSize,
+                                          darkTheme: widget.darkTheme,
+                                          background: widget.background,
+                                          features: widget.features),
                                     ),
                                   );
                                   if (img != null) {
-                                    image.load(img);
+                                    image.load(img, widget.viewportSize);
                                     setState(() {});
                                   }
                                 },
@@ -300,11 +313,13 @@ class MultiImageEditorState extends State<MultiImageEditor> {
                                       CupertinoPageRoute(
                                         builder: (context) => ImageFilters(
                                           image: image.image,
+                                          darkTheme: widget.darkTheme,
                                         ),
                                       ),
                                     );
                                     if (editedImage != null) {
-                                      image.load(editedImage);
+                                      image.load(
+                                          editedImage, widget.viewportSize);
                                     }
                                     setState(() {});
                                   },

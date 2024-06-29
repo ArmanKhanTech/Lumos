@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quill/data/constants.dart';
 
 import 'package:quill/quill.dart';
 import 'package:quill/utility/utilities.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Quill Demo'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -42,16 +44,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<Uint8List> uploadPostSingleImage(
       {BuildContext? context, required XFile image}) async {
-    // Convert the image to bytes
-    Uint8List imageToEdit = await image.readAsBytes();
-
     // Open the single-image editor
     Uint8List editedImage = await Navigator.push(
       context!,
       CupertinoPageRoute(
         builder: (context) => SingleImageEditor(
-          image: imageToEdit,
-          multiImages: false,
+          image: image,
+          darkTheme: true,
+          background: EditorBackground.blur,
+          viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
             crop: true,
             rotate: true,
@@ -73,18 +74,15 @@ class _MyHomePageState extends State<MyHomePage> {
     BuildContext? context,
     required List<XFile> images,
   }) async {
-    // Convert the images to bytes
-    List<Uint8List> imagesToEdit = [];
-    for (int i = 0; i < images.length; i++) {
-      imagesToEdit.add(await images[i].readAsBytes());
-    }
-
     // Open the multi-image editor
     Uint8List editedImages = await Navigator.push(
       context!,
       CupertinoPageRoute(
         builder: (context) => MultiImageEditor(
-          images: imagesToEdit,
+          images: images,
+          darkTheme: true,
+          background: EditorBackground.gradient,
+          viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
             crop: true,
             rotate: true,

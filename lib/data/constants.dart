@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+enum EditorBackground {
+  colored,
+  gradient,
+  blur,
+}
+
 class Constants {
   static const Color lightPrimary = Color.fromARGB(255, 255, 255, 255);
   static const Color darkPrimary = Color.fromARGB(255, 0, 0, 0);
@@ -31,6 +37,9 @@ class Constants {
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.dark,
       ),
+      actionsIconTheme: IconThemeData(
+        color: Colors.black,
+      ),
     ),
     colorScheme: ColorScheme.fromSwatch()
         .copyWith(
@@ -51,18 +60,20 @@ class Constants {
       color: darkBG,
     ),
     appBarTheme: const AppBarTheme(
-      elevation: 0.0,
-      backgroundColor: darkBG,
-      iconTheme: IconThemeData(color: Colors.white),
-      systemOverlayStyle: SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.black,
-        systemNavigationBarIconBrightness: Brightness.light,
-        systemNavigationBarDividerColor: null,
-        statusBarColor: Colors.black,
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.light,
-      ),
-    ),
+        elevation: 0.0,
+        backgroundColor: darkBG,
+        iconTheme: IconThemeData(color: Colors.white),
+        systemOverlayStyle: SystemUiOverlayStyle(
+          systemNavigationBarColor: Colors.black,
+          systemNavigationBarIconBrightness: Brightness.light,
+          systemNavigationBarDividerColor: null,
+          statusBarColor: Colors.black,
+          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.light,
+        ),
+        actionsIconTheme: IconThemeData(
+          color: Colors.white,
+        )),
     colorScheme: ColorScheme.fromSwatch(
       accentColor: darkAccent,
     )

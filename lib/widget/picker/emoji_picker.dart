@@ -1,39 +1,31 @@
 import 'package:flutter/material.dart';
 
-import '../data/emojies.dart';
-import '../data/layer.dart';
+import '../../data/emojies.dart';
+import '../../data/layer.dart';
 
-class Emojies extends StatefulWidget {
-  const Emojies({super.key});
+class EmojiPicker extends StatefulWidget {
+  final bool darkTheme;
+
+  const EmojiPicker({super.key, required this.darkTheme});
 
   @override
-  createState() => _EmojiesState();
+  createState() => _EmojiPickerState();
 }
 
-class _EmojiesState extends State<Emojies> {
+class _EmojiPickerState extends State<EmojiPicker> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 400,
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-          border: Border(
-            top: BorderSide(width: 1, color: Colors.white),
-            bottom: BorderSide(width: 0, color: Colors.white),
-            left: BorderSide(width: 0, color: Colors.white),
-            right: BorderSide(width: 0, color: Colors.white),
-          )),
       child: Column(
         children: [
           const SizedBox(height: 16),
-          const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(
               'Select Emoji',
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
+                color: widget.darkTheme ? Colors.white : Colors.black,
+                fontSize: 18,
               ),
             ),
           ]),
@@ -61,7 +53,7 @@ class _EmojiesState extends State<Emojies> {
                       context,
                       EmojiLayerData(
                         text: emoji,
-                        size: 32.0,
+                        size: 30.0,
                       ),
                     );
                   },
@@ -69,7 +61,7 @@ class _EmojiesState extends State<Emojies> {
                     padding: EdgeInsets.zero,
                     child: Text(
                       emoji,
-                      style: const TextStyle(fontSize: 35),
+                      style: const TextStyle(fontSize: 30),
                     ),
                   ),
                 ));

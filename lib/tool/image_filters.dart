@@ -1,149 +1,144 @@
 import 'package:colorfilter_generator/colorfilter_generator.dart';
 import 'package:colorfilter_generator/presets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 import 'package:screenshot/screenshot.dart';
 
+import 'package:quill/data/constants.dart';
+
 class ImageFilters extends StatefulWidget {
   final Uint8List image;
-  final bool useCache;
+
+  final bool useCache, darkTheme;
 
   const ImageFilters({
     super.key,
     required this.image,
     this.useCache = true,
+    required this.darkTheme,
   });
 
   @override
-  createState() => ImageFiltersState();
+  State<ImageFilters> createState() => _ImageFiltersState();
 }
 
-class ImageFiltersState extends State<ImageFilters> {
+class _ImageFiltersState extends State<ImageFilters> {
   late Image decodedImage;
 
   ColorFilterGenerator selectedFilter = PresetFilters.none;
 
   Uint8List resizedImage = Uint8List.fromList([]);
+  Uint8List filterAppliedImage = Uint8List.fromList([]);
 
   double filterOpacity = 1;
-
-  Uint8List filterAppliedImage = Uint8List.fromList([]);
 
   ScreenshotController screenshotController = ScreenshotController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(CupertinoIcons.chevron_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          iconSize: 30.0,
-          color: Colors.white,
-          padding: const EdgeInsets.only(bottom: 3),
-        ),
-        title: const Text(
-          'Filters',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-          ),
-        ),
-        backgroundColor: Colors.black,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.black,
-          statusBarIconBrightness: Brightness.light,
-          systemNavigationBarColor: Colors.black,
-          systemNavigationBarIconBrightness: Brightness.light,
-        ),
-        actions: [
-          IconButton(
-            padding: const EdgeInsets.only(
-              left: 10,
-              right: 22,
+    return Theme(
+        data: widget.darkTheme ? Constants.darkTheme : Constants.lightTheme,
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              iconSize: 30.0,
+              color: widget.darkTheme ? Colors.white : Colors.black,
+              padding: const EdgeInsets.only(bottom: 3),
             ),
-            icon: const Icon(Icons.check, size: 30, color: Colors.white),
-            onPressed: () async {
-              var data = await screenshotController.capture();
-              if (mounted) Navigator.pop(context, data);
-            },
-          ),
-        ],
-      ),
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Screenshot(
-          controller: screenshotController,
-          child: Stack(
-            children: [
-              Image.memory(
-                widget.image,
-                fit: BoxFit.cover,
+            title: Text(
+              'Filters',
+              style: TextStyle(
+                color: widget.darkTheme ? Colors.white : Colors.black,
+                fontSize: 20,
               ),
-              FilterAppliedImage(
-                image: widget.image,
-                filter: selectedFilter,
-                fit: BoxFit.cover,
-                opacity: filterOpacity,
-                onProcess: (img) {
-                  filterAppliedImage = img;
+            ),
+            actions: [
+              IconButton(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  right: 22,
+                ),
+                icon: Icon(Icons.check,
+                    size: 30,
+                    color: widget.darkTheme ? Colors.white : Colors.black),
+                onPressed: () async {
+                  var data = await screenshotController.capture();
+                  if (mounted) Navigator.pop(context, data);
                 },
               ),
             ],
           ),
-        ),
-      ),
-      bottomNavigationBar: SafeArea(
-        child: SizedBox(
-          height: 140,
-          child: Column(children: [
-            const SizedBox(height: 10),
-            SizedBox(
-              height: 20,
-              child: Slider(
-                min: 0,
-                max: 1,
-                divisions: 100,
-                value: filterOpacity,
-                activeColor: Colors.white,
-                inactiveColor: Colors.grey,
-                thumbColor: Colors.white,
-                onChanged: (value) {
-                  filterOpacity = value;
-                  setState(() {});
-                },
-              ),
-            ),
-            SizedBox(
-              height: 110,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  for (int i = 0; i < presetFiltersList.length; i++)
-                    filterPreviewButton(
-                      filter: presetFiltersList[i],
-                      name: presetFiltersList[i].name,
-                    ),
+          body: Center(
+            child: Screenshot(
+              controller: screenshotController,
+              child: Stack(
+                children: [
+                  Image.memory(
+                    widget.image,
+                    fit: BoxFit.cover,
+                  ),
+                  FilterAppliedImage(
+                    image: widget.image,
+                    filter: selectedFilter,
+                    fit: BoxFit.cover,
+                    opacity: filterOpacity,
+                    onProcess: (img) {
+                      filterAppliedImage = img;
+                    },
+                  ),
                 ],
               ),
             ),
-          ]),
-        ),
-      ),
-    );
+          ),
+          bottomNavigationBar: SafeArea(
+            child: SizedBox(
+              height: 140,
+              child: Column(children: [
+                const SizedBox(height: 10),
+                SizedBox(
+                  height: 20,
+                  child: Slider(
+                    min: 0,
+                    max: 1,
+                    divisions: 100,
+                    value: filterOpacity,
+                    activeColor: widget.darkTheme ? Colors.white : Colors.black,
+                    inactiveColor: Colors.grey,
+                    thumbColor: widget.darkTheme ? Colors.white : Colors.black,
+                    onChanged: (value) {
+                      filterOpacity = value;
+                      setState(() {});
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 110,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      for (int i = 0; i < presetFiltersList.length; i++)
+                        filterPreviewButton(
+                            filter: presetFiltersList[i],
+                            name: presetFiltersList[i].name,
+                            color:
+                                widget.darkTheme ? Colors.white : Colors.black),
+                    ],
+                  ),
+                ),
+              ]),
+            ),
+          ),
+        ));
   }
 
-  Widget filterPreviewButton({required filter, required String name}) {
+  Widget filterPreviewButton(
+      {required filter, required String name, required Color color}) {
     if (name == 'AddictiveBlue') {
       name = 'Cerulean';
     } else if (name == 'AddictiveRed') {
@@ -164,7 +159,7 @@ class ImageFiltersState extends State<ImageFilters> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             border: Border.all(
-              color: Colors.black,
+              color: color,
               width: 1,
             ),
           ),
@@ -179,7 +174,7 @@ class ImageFiltersState extends State<ImageFilters> {
         ),
         Text(
           name,
-          style: const TextStyle(fontSize: 15, color: Colors.white),
+          style: TextStyle(fontSize: 15, color: color),
         ),
       ]),
     );
@@ -188,9 +183,13 @@ class ImageFiltersState extends State<ImageFilters> {
 
 class FilterAppliedImage extends StatelessWidget {
   final Uint8List image;
+
   final ColorFilterGenerator filter;
+
   final BoxFit? fit;
+
   final Function(Uint8List)? onProcess;
+
   final double opacity;
 
   FilterAppliedImage({
