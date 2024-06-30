@@ -9,23 +9,23 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/ArmanKhanTech/Pixelate/">
+  <a href="https://github.com/ArmanKhanTech/Lumos/">
     <img src="https://github.com/ArmanKhanTech/Pixelate/assets/92728787/d88df582-6ae4-4c56-b7b6-1e10a3c01212" alt="Logo" width="80" height="80" >
   </a>
 
-  <h3 align="center">Pixelate</h3>
+  <h3 align="center">Lumos</h3>
   <p align="center">Status: Ongoing</p>
 
   <p align="center">
     A Flutter image editor package.
     <br />
     <br />
-    <a href="https://github.com/ArmanKhanTech/Pixel"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ArmanKhanTech/Lumos"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/ArmanKhanTech/Pixel/issues">Report a Bug</a>
+    <a href="https://github.com/ArmanKhanTech/Lumos/issues">Report a Bug</a>
     ·
-    <a href="https://github.com/ArmanKhanTech/Pixel/issues">Request new Feature</a>
+    <a href="https://github.com/ArmanKhanTech/Lumos/issues">Request new Feature</a>
   </p>
 </div>
 <br />
@@ -48,7 +48,7 @@
 
 ## About the Project
 
-Easily integrate powerful image editing capabilities into your Flutter applications with Pixelate. This package empowers developers to seamlessly incorporate features like crop, rotate, flip, filters, and more directly into their apps, providing users with robust tools to enhance and customize images on the fly. Whether you're building a photo-sharing app, an e-commerce platform, or a creative tool, the Flutter Image Editor offers a versatile solution with an intuitive interface and efficient performance. Take control of image manipulation in your Flutter projects and elevate user experience with this flexible and easy-to-use package.
+Easily integrate powerful image editing capabilities into your Flutter applications with Lumos. This package empowers developers to seamlessly incorporate features like crop, rotate, flip, filters, and more directly into their apps, providing users with robust tools to enhance and customize images on the fly. Whether you're building a photo-sharing app, an e-commerce platform, or a creative tool, the Flutter Image Editor offers a versatile solution with an intuitive interface and efficient performance. Take control of image manipulation in your Flutter projects and elevate user experience with this flexible and easy-to-use package.
 
 <b>Key Features:<b>
 
@@ -185,16 +185,16 @@ Project Link - [https://github.com/ArmanKhanTech/Pixel](https://github.com/Arman
 
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/ArmanKhanTech/Pixelate.svg?style=for-the-badge
-[contributors-url]: https://github.com/ArmanKhanTech/Pixelate/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ArmanKhanTech/Pixelate.svg?style=for-the-badge
-[forks-url]: https://github.com/ArmanKhanTech/Pixelate/network/members
-[stars-shield]: https://img.shields.io/github/stars/ArmanKhanTech/Pixelate.svg?style=for-the-badge
-[stars-url]: https://github.com/ArmanKhanTech/Pixelate/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ArmanKhanTech/Pixelate.svg?style=for-the-badge
-[issues-url]: https://github.com/ArmanKhanTech/Pixelate/issues
-[license-shield]: https://img.shields.io/github/license/ArmanKhanTech/Pixelate.svg?style=for-the-badge
-[license-url]: https://github.com/ArmanKhanTech/Pixelate/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ArmanKhanTech/Lumos.svg?style=for-the-badge
+[contributors-url]: https://github.com/ArmanKhanTech/Lumos/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ArmanKhanTech/Lumos.svg?style=for-the-badge
+[forks-url]: https://github.com/ArmanKhanTech/Lumos/network/members
+[stars-shield]: https://img.shields.io/github/stars/ArmanKhanTech/Lumos.svg?style=for-the-badge
+[stars-url]: https://github.com/ArmanKhanTech/Lumos/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ArmanKhanTech/Lumos.svg?style=for-the-badge
+[issues-url]: https://github.com/ArmanKhanTech/Lumos/issues
+[license-shield]: https://img.shields.io/github/license/ArmanKhanTech/Lumos.svg?style=for-the-badge
+[license-url]: https://github.com/ArmanKhanTech/Lumos/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/arman-khan-25b624205/
 [Android]: https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white
