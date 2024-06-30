@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ArmanKhanTech/Pixel/">
-    <img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/c6501dd6-e82c-4f17-9156-42a7cea979cd" alt="Logo" width="80" height="80" >
+    <img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/d88df582-6ae4-4c56-b7b6-1e10a3c01212" alt="Logo" width="80" height="80" >
   </a>
 
   <h3 align="center">Pixel</h3>
@@ -145,21 +145,17 @@ List<Uint8List> editedImages = await Navigator.push(
 
 
 ## Screenshots
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
-<img src="" alt="Logo" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/68496571-6597-4535-a71b-a67fcd344a52" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/ef90cb62-41a2-4e83-b033-0065b88b4685" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/078af92a-af1f-4527-aa4d-281ffb1d4155" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/e5e14b01-c9e2-4f5e-9a7a-bb385f2890cd" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/73847f14-c83e-4c81-acd6-5f7c4d2fb42d" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/67cfc46a-9df8-4e20-b49e-b6da343938af" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/4588b835-2752-403a-a57e-118a3c859a7e" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/851511ac-ef77-4ace-8ae5-e650ada83b54" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/26c4823c-c414-4b0c-b448-e27d990ab90d" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/cf840045-ab26-4191-b393-fe8f161a29fa" alt="Screenshot" width="250" height="500">
+<img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/78346450-dfad-43bc-b56d-168f5e709b06" alt="Screenshot" width="250" height="500">
 
 
 
