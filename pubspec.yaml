@@ -1,7 +1,7 @@
-name: pixel
+name: pixelate
 description: "A Flutter image editor package."
 version: 0.0.1
-homepage: https://github.com/ArmanKhanTech/Pixel
+homepage: https://github.com/ArmanKhanTech/Pixelate
 
 environment:
   sdk: '>=3.4.3 <4.0.0'

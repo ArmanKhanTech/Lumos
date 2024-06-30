@@ -1,4 +1,4 @@
-package com.android.pixel
+package com.android.pixelate
 
 import io.flutter.embedding.android.FlutterActivity
 

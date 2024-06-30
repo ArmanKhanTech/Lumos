@@ -5,9 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:pixel/data/constants.dart';
-import 'package:pixel/pixel.dart';
-import 'package:pixel/utility/model.dart';
+import 'package:pixelate/data/constants.dart';
+import 'package:pixelate/pixelate.dart';
+import 'package:pixelate/utility/model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pixel',
+      title: 'Pixelate',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Pixel Image Editor'),
+      home: const MyHomePage(title: 'Pixelate Image Editor'),
       debugShowCheckedModeBanner: false,
     );
   }

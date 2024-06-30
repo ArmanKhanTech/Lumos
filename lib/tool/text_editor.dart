@@ -1,8 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 
-import 'package:pixel/data/constants.dart';
-import 'package:pixel/utility/model.dart';
+import 'package:pixelate/data/constants.dart';
+import 'package:pixelate/utility/model.dart';
 
 import '../widget/picker/color_picker.dart';
 

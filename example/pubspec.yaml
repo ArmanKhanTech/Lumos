@@ -1,5 +1,5 @@
 name: example
-description: "Example for Pixel image editor."
+description: "Example for Pixelate image editor."
 publish_to: 'none' 
 version: 1.0.0+1
 
@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  pixel:
+  pixelate:
     path: ../
 
   cupertino_icons: ^1.0.6

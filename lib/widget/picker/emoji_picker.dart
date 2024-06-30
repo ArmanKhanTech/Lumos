@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:pixel/utility/model.dart';
+import 'package:pixelate/utility/model.dart';
 
 import '../../data/emojies.dart';
 
