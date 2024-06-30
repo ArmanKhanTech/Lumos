@@ -184,6 +184,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
     return PopScope(
         canPop: false,
         onPopInvoked: (onPopInvoked) async {
+          if (onPopInvoked) return;
           return await exitDialog(context);
         },
         child: Theme(

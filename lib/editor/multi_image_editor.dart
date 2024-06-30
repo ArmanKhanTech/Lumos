@@ -101,6 +101,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
     return PopScope(
         canPop: false,
         onPopInvoked: (onPopInvoked) async {
+          if (onPopInvoked) return;
           return await exitDialog(context);
         },
         child: Theme(
