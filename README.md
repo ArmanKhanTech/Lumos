@@ -78,7 +78,7 @@ Uint8List editedImage = SingleImageEditor(
           features: const ImageEditorFeatures(
             crop: true,
             rotate: true,
-            brush: false,
+            adjust: true,
             emoji: true,
             filters: true,
             flip: true,
@@ -111,7 +111,7 @@ List<Uint8List> editedImages = await Navigator.push(
           features: const ImageEditorFeatures(
             crop: true,
             rotate: true,
-            brush: false,
+            adjust: true,
             emoji: true,
             filters: true,
             flip: true,
@@ -137,7 +137,7 @@ List<Uint8List> editedImages = await Navigator.push(
 |--------|--------------------|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
 | 1      | image              | dynamic                 | Referance to the image user wants to edit. Only for Single Image Editor.                                                                            | Yes       |
 | 2      | images             | List&lt;dynamic&gt; | Referance to the images user wants to edit. Only for Multi Image Editor.                                                                            | Yes       |
-| 3      | features           | ImageEditorFeatures     | The edit features you want the users to have access to. Valid features are: crop, blur, emoji, flip, rotate, text &amp; filters. All are allowed by default.   | No        |
+| 3      | features           | ImageEditorFeatures     | The edit features you want the users to have access to. Valid features are: crop, adjust, blur, emoji, flip, rotate, text &amp; filters. All are allowed by default.   | No        |
 | 4      | cropAvailableRatio | List&lt;AspectRatioOption&gt;   | List of crop ratios that will be available to the users. Vaild ratios are: freeform, 1:1, 4:3, 5:4, 7:5 &amp; 16:9. All ratios are available by default. | No        |
 | 5      | viewportSize       | Size                    | Viewport size of the user's device to adjust &amp; fit image onto the edit screen.                                                                     | Yes       |
 | 6      | darkTheme          | bool                    | The theme of the image editor. True for dark theme and false for light theme.                                                                       | Yes       |
@@ -145,21 +145,21 @@ List<Uint8List> editedImages = await Navigator.push(
 
 
 ## Screenshots
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/d468a8a6-7af3-465a-87d7-39db13835af9" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/a3e82740-5f75-4de2-b5ac-efb7995ea54a" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/81c65e14-291c-4865-8ddb-2526aef89cd8" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/329648ee-b348-4e19-8d1e-4953d0906bbe" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/77eca1fe-f95a-4b0c-882c-2f46908c861b" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/a34dcbee-f772-4f0d-8846-7d9639b1bdc5" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/b6960e23-1e37-4517-8b6a-6e97c6c0a5f5" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/8a19428f-16fc-470d-b924-a54e3136eb32" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/30b41e95-035a-46af-95e0-eaeb8e5cbcfb" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/83347d7c-0253-48bb-a28e-7cb7cb1ecd36" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/78263931-b145-44b4-a17f-79fc90a39263" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/4470602f-73e1-49a6-88f2-87491b9b8868" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/123d02e1-d261-4929-b52f-ad50ce04fa32" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/3218b7c1-f122-4bcd-aafe-cfaf71f86c0a" alt="Logo" width="250" height="500">
-<img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/67093edd-0dbf-40b0-b8c5-47cd3273c735" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
+<img src="" alt="Logo" width="250" height="500">
 
 
 
