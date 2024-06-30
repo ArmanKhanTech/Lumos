@@ -135,8 +135,8 @@ List<Uint8List> editedImages = await Navigator.push(
 
 | Sr No. | Parameter          | Type                    | Description                                                                                                                                         | Required? |
 |--------|--------------------|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| 1      | image              | dynamic                 | Referance to the image user wants to edit. Only for Single Image Editor.                                                                            | Yes       |
-| 2      | images             | List&lt;dynamic&gt; | Referance to the images user wants to edit. Only for Multi Image Editor.                                                                            | Yes       |
+| 1      | image              | dynamic                 | Referance to the image user wants to edit. Only for Single Image Editor. Supported types are: File, Xfile &amp; Uint8List.                                                                       | Yes       |
+| 2      | images             | List&lt;dynamic&gt; | Referance to the images user wants to edit. Only for Multi Image Editor. Supported types are: File, Xfile &amp; Uint8List.                                                                         | Yes       |
 | 3      | features           | ImageEditorFeatures     | The edit features you want the users to have access to. Valid features are: crop, adjust, blur, emoji, flip, rotate, text &amp; filters. All are allowed by default.   | No        |
 | 4      | cropAvailableRatio | List&lt;AspectRatioOption&gt;   | List of crop ratios that will be available to the users. Vaild ratios are: freeform, 1:1, 4:3, 5:4, 7:5 &amp; 16:9. All ratios are available by default. | No        |
 | 5      | viewportSize       | Size                    | Viewport size of the user's device to adjust &amp; fit image onto the edit screen.                                                                     | Yes       |
