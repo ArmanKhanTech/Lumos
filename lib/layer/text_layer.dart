@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:pixelate/editor/single_image_editor.dart';
-import 'package:pixelate/utility/model.dart';
-import 'package:pixelate/widget/dialog/text_layer_dialog.dart';
+import 'package:lumos/editor/single_image_editor.dart';
+import 'package:lumos/utility/model.dart';
+import 'package:lumos/widget/dialog/text_layer_dialog.dart';
 
 class TextLayer extends StatefulWidget {
   final TextLayerData layerData;

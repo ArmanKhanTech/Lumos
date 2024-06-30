@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:pixelate/utility/model.dart';
+import 'package:lumos/utility/model.dart';
 
 class BackgroundBlurLayer extends StatefulWidget {
   final BackgroundBlurLayerData layerData;

@@ -1,7 +1,7 @@
-name: pixelate
+name: lumos
 description: "A Flutter image editor package."
 version: 0.0.1
-homepage: https://github.com/ArmanKhanTech/Pixelate
+homepage: https://github.com/ArmanKhanTech/Lumos
 
 environment:
   sdk: '>=3.4.3 <4.0.0'

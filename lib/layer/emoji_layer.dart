@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:pixelate/editor/single_image_editor.dart';
-import 'package:pixelate/utility/model.dart';
+import 'package:lumos/editor/single_image_editor.dart';
+import 'package:lumos/utility/model.dart';
 
 import '../widget/dialog/emoji_layer_dialog.dart';
 

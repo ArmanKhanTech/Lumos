@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:pixelate/editor/single_image_editor.dart';
-import 'package:pixelate/utility/model.dart';
+import 'package:lumos/editor/single_image_editor.dart';
+import 'package:lumos/utility/model.dart';
 
 class EmojiLayerDialog extends StatefulWidget {
   final int index;

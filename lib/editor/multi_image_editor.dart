@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 
-import 'package:pixelate/data/constants.dart';
-import 'package:pixelate/editor/single_image_editor.dart';
-import 'package:pixelate/utility/image_item.dart';
-import 'package:pixelate/utility/model.dart';
-import 'package:pixelate/widget/dialog/exit_dialog.dart';
-import 'package:pixelate/widget/indicator/progress_indicator.dart';
+import 'package:lumos/data/constants.dart';
+import 'package:lumos/editor/single_image_editor.dart';
+import 'package:lumos/utility/image_item.dart';
+import 'package:lumos/utility/model.dart';
+import 'package:lumos/widget/dialog/exit_dialog.dart';
+import 'package:lumos/widget/indicator/progress_indicator.dart';
 
 import '../tool/image_filters.dart';
 

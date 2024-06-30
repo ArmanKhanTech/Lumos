@@ -1,4 +1,4 @@
-package com.android.pixelate
+package com.android.lumos
 
 import io.flutter.embedding.android.FlutterActivity
 

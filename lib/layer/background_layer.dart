@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pixelate/utility/model.dart';
+import 'package:lumos/utility/model.dart';
 
 class BackgroundLayer extends StatefulWidget {
   final BackgroundLayerData layerData;
