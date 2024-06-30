@@ -9,11 +9,11 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/ArmanKhanTech/Pixel/">
-    <img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/d88df582-6ae4-4c56-b7b6-1e10a3c01212" alt="Logo" width="80" height="80" >
+  <a href="https://github.com/ArmanKhanTech/Pixelate/">
+    <img src="https://github.com/ArmanKhanTech/Pixelate/assets/92728787/d88df582-6ae4-4c56-b7b6-1e10a3c01212" alt="Logo" width="80" height="80" >
   </a>
 
-  <h3 align="center">Pixel</h3>
+  <h3 align="center">Pixelate</h3>
   <p align="center">Status: Ongoing</p>
 
   <p align="center">
@@ -48,7 +48,7 @@
 
 ## About the Project
 
-Easily integrate powerful image editing capabilities into your Flutter applications with Pixel. This package empowers developers to seamlessly incorporate features like crop, rotate, flip, filters, and more directly into their apps, providing users with robust tools to enhance and customize images on the fly. Whether you're building a photo-sharing app, an e-commerce platform, or a creative tool, the Flutter Image Editor offers a versatile solution with an intuitive interface and efficient performance. Take control of image manipulation in your Flutter projects and elevate user experience with this flexible and easy-to-use package.
+Easily integrate powerful image editing capabilities into your Flutter applications with Pixelate. This package empowers developers to seamlessly incorporate features like crop, rotate, flip, filters, and more directly into their apps, providing users with robust tools to enhance and customize images on the fly. Whether you're building a photo-sharing app, an e-commerce platform, or a creative tool, the Flutter Image Editor offers a versatile solution with an intuitive interface and efficient performance. Take control of image manipulation in your Flutter projects and elevate user experience with this flexible and easy-to-use package.
 
 <b>Key Features:<b>
 
@@ -181,20 +181,20 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Arman Khan - ak2341776@gmail.com
 
-Project Link - [https://github.com/ArmanKhanTech/Pixel](https://github.com/ArmanKhanTech/Pixel)
+Project Link - [https://github.com/ArmanKhanTech/Pixel](https://github.com/ArmanKhanTech/Pixelate)
 
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/ArmanKhanTech/Pixel.svg?style=for-the-badge
-[contributors-url]: https://github.com/ArmanKhanTech/Pixel/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ArmanKhanTech/Pixel.svg?style=for-the-badge
-[forks-url]: https://github.com/ArmanKhanTech/Pixel/network/members
-[stars-shield]: https://img.shields.io/github/stars/ArmanKhanTech/Pixel.svg?style=for-the-badge
-[stars-url]: https://github.com/ArmanKhanTech/Pixel/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ArmanKhanTech/Pixel.svg?style=for-the-badge
-[issues-url]: https://github.com/ArmanKhanTech/Pixel/issues
-[license-shield]: https://img.shields.io/github/license/ArmanKhanTech/Pixel.svg?style=for-the-badge
-[license-url]: https://github.com/ArmanKhanTech/Pixel/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ArmanKhanTech/Pixelate.svg?style=for-the-badge
+[contributors-url]: https://github.com/ArmanKhanTech/Pixelate/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ArmanKhanTech/Pixelate.svg?style=for-the-badge
+[forks-url]: https://github.com/ArmanKhanTech/Pixelate/network/members
+[stars-shield]: https://img.shields.io/github/stars/ArmanKhanTech/Pixelate.svg?style=for-the-badge
+[stars-url]: https://github.com/ArmanKhanTech/Pixelate/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ArmanKhanTech/Pixelate.svg?style=for-the-badge
+[issues-url]: https://github.com/ArmanKhanTech/Pixelate/issues
+[license-shield]: https://img.shields.io/github/license/ArmanKhanTech/Pixelate.svg?style=for-the-badge
+[license-url]: https://github.com/ArmanKhanTech/Pixelate/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/arman-khan-25b624205/
 [Android]: https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white
