@@ -20,8 +20,6 @@ class MultiImageEditor extends StatefulWidget {
   final List<dynamic> images;
   final List<AspectRatioOption> cropAvailableRatios;
 
-  final int maxLength;
-
   final ImageEditorFeatures features;
 
   final Size viewportSize;
@@ -33,11 +31,9 @@ class MultiImageEditor extends StatefulWidget {
   const MultiImageEditor({
     super.key,
     required this.images,
-    this.maxLength = 5,
     this.features = const ImageEditorFeatures(
       crop: true,
       blur: true,
-      brush: true,
       emoji: true,
       filters: true,
       flip: true,

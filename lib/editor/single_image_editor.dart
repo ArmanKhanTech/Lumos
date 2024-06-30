@@ -49,7 +49,6 @@ class SingleImageEditor extends StatefulWidget {
       this.features = const ImageEditorFeatures(
         crop: true,
         blur: true,
-        brush: true,
         emoji: true,
         filters: true,
         flip: true,

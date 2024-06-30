@@ -67,6 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
             text: true,
             blur: true,
           ),
+          cropAvailableRatios: const [
+            AspectRatioOption(title: 'Freeform'),
+            AspectRatioOption(title: '1:1', ratio: 1),
+            AspectRatioOption(title: '4:3', ratio: 4 / 3),
+            AspectRatioOption(title: '5:4', ratio: 5 / 4),
+            AspectRatioOption(title: '7:5', ratio: 7 / 5),
+            AspectRatioOption(title: '16:9', ratio: 16 / 9),
+          ],
         ),
       ),
     );
@@ -95,7 +103,14 @@ class _MyHomePageState extends State<MyHomePage> {
             text: true,
             blur: true,
           ),
-          maxLength: 5,
+          cropAvailableRatios: const [
+            AspectRatioOption(title: 'Freeform'),
+            AspectRatioOption(title: '1:1', ratio: 1),
+            AspectRatioOption(title: '4:3', ratio: 4 / 3),
+            AspectRatioOption(title: '5:4', ratio: 5 / 4),
+            AspectRatioOption(title: '7:5', ratio: 7 / 5),
+            AspectRatioOption(title: '16:9', ratio: 16 / 9),
+          ],
         ),
       ),
     );
