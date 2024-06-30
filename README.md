@@ -50,7 +50,7 @@
 
 Easily integrate powerful image editing capabilities into your Flutter applications with Lumos. This package empowers developers to seamlessly incorporate features like crop, rotate, flip, filters, and more directly into their apps, providing users with robust tools to enhance and customize images on the fly. Whether you're building a photo-sharing app, an e-commerce platform, or a creative tool, the Flutter Image Editor offers a versatile solution with an intuitive interface and efficient performance. Take control of image manipulation in your Flutter projects and elevate user experience with this flexible and easy-to-use package.
 
-<b>Key Features:<b>
+<b>Key Features:</b>
 
 <li>Crop, rotate, and flip images.</li>
 <li>Apply filters and effects in real-time.</li>
@@ -62,7 +62,7 @@ Easily integrate powerful image editing capabilities into your Flutter applicati
 <li>Undo and redo changes seamlessly.</li>
 <br />
 
-**Supports Android & iOS only.**
+**Supports Android & iOS only. Soon on web too.**
 
 
 
@@ -197,7 +197,3 @@ Project Link - [https://github.com/ArmanKhanTech/Lumos](https://github.com/Arman
 [license-url]: https://github.com/ArmanKhanTech/Lumos/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/arman-khan-25b624205/
-[Android]: https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white
-[Android-url]: https://developer.android.com/
-[Java]: https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white
-[Java-url]: https://www.java.com/
