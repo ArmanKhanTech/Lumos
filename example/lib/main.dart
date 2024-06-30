@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
       CupertinoPageRoute(
         builder: (context) => SingleImageEditor(
           image: image,
-          darkTheme: false,
+          darkTheme: true,
           background: EditorBackground.none,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(

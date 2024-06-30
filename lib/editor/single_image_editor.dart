@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_pixels/image_pixels.dart';
+import 'package:pixel/widget/indicator/progress_indicator.dart';
 import 'package:screenshot/screenshot.dart';
 
 import 'package:pixel/utility/image_item.dart';
@@ -274,92 +275,96 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                 const SizedBox(width: 20),
               ],
             ),
-            body: Container(
-                decoration: BoxDecoration(
-                  image: widget.background == EditorBackground.blur
-                      ? DecorationImage(
-                          image: MemoryImage(currentImage.image),
-                          fit: BoxFit.cover,
-                        )
-                      : null,
-                  color: widget.darkTheme ? Colors.black : Colors.white,
-                ),
-                child: Stack(
-                  children: [
-                    widget.background == EditorBackground.gradient
-                        ? ImagePixels(
-                            imageProvider: MemoryImage(currentImage.image),
-                            builder: (BuildContext context, ImgDetails img) {
-                              topLeftColor =
-                                  img.pixelColorAtAlignment!(Alignment.topLeft);
-                              bottomRightColor = img.pixelColorAtAlignment!(
-                                  Alignment.bottomRight);
-
-                              return Container(
-                                  decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    topLeftColor,
-                                    bottomRightColor,
-                                  ],
-                                ),
-                              ));
-                            },
-                          )
-                        : const SizedBox(),
-                    widget.background == EditorBackground.blur
-                        ? Positioned.fill(
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(
-                                sigmaX: 10,
-                                sigmaY: 10,
-                              ),
-                              child: Container(
-                                color: Colors.black.withOpacity(0.2),
-                              ),
-                            ),
-                          )
-                        : const SizedBox(),
-                    // TODO: Fix size
-                    Center(
-                      child: SizedBox(
-                          width: currentImage.width / pixelRatio,
-                          height: currentImage.height / pixelRatio,
-                          child: Center(
-                            child: Screenshot(
-                              controller: screenshotController,
-                              child: RotatedBox(
-                                quarterTurns: rotateValue,
-                                child: Transform(
-                                  transform: Matrix4(
-                                    1,
-                                    0,
-                                    0,
-                                    0,
-                                    0,
-                                    1,
-                                    0,
-                                    0,
-                                    0,
-                                    0,
-                                    1,
-                                    0,
-                                    x,
-                                    y,
-                                    0,
-                                    1 / scaleFactor,
-                                  )..rotateY(flipValue),
-                                  alignment: FractionalOffset.center,
-                                  child: layersStack,
-                                ),
-                              ),
-                            ),
-                          )),
+            body: currentImage.image.isNotEmpty
+                ? Container(
+                    decoration: BoxDecoration(
+                      image: widget.background == EditorBackground.blur
+                          ? DecorationImage(
+                              image: MemoryImage(currentImage.image),
+                              fit: BoxFit.cover,
+                            )
+                          : null,
+                      color: widget.darkTheme ? Colors.black : Colors.white,
                     ),
-                  ],
-                )),
+                    child: Stack(
+                      children: [
+                        widget.background == EditorBackground.gradient
+                            ? ImagePixels(
+                                imageProvider: MemoryImage(currentImage.image),
+                                builder:
+                                    (BuildContext context, ImgDetails img) {
+                                  topLeftColor = img.pixelColorAtAlignment!(
+                                      Alignment.topLeft);
+                                  bottomRightColor = img.pixelColorAtAlignment!(
+                                      Alignment.bottomRight);
+
+                                  return Container(
+                                      decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        topLeftColor,
+                                        bottomRightColor,
+                                      ],
+                                    ),
+                                  ));
+                                },
+                              )
+                            : const SizedBox(),
+                        widget.background == EditorBackground.blur
+                            ? Positioned.fill(
+                                child: BackdropFilter(
+                                  filter: ImageFilter.blur(
+                                    sigmaX: 10,
+                                    sigmaY: 10,
+                                  ),
+                                  child: Container(
+                                    color: Colors.black.withOpacity(0.2),
+                                  ),
+                                ),
+                              )
+                            : const SizedBox(),
+                        // TODO: Fix size
+                        Center(
+                          child: SizedBox(
+                              width: currentImage.width / pixelRatio,
+                              height: currentImage.height / pixelRatio,
+                              child: Center(
+                                child: Screenshot(
+                                  controller: screenshotController,
+                                  child: RotatedBox(
+                                    quarterTurns: rotateValue,
+                                    child: Transform(
+                                      transform: Matrix4(
+                                        1,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        1,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        1,
+                                        0,
+                                        x,
+                                        y,
+                                        0,
+                                        1 / scaleFactor,
+                                      )..rotateY(flipValue),
+                                      alignment: FractionalOffset.center,
+                                      child: layersStack,
+                                    ),
+                                  ),
+                                ),
+                              )),
+                        ),
+                      ],
+                    ))
+                : circularProgress(
+                    context, widget.darkTheme ? Colors.white : Colors.black),
             bottomNavigationBar: Container(
               alignment: Alignment.bottomCenter,
               height: 75,
