@@ -83,10 +83,6 @@ class _ImageCropperState extends State<ImageCropper> {
             ),
             actions: [
               IconButton(
-                padding: const EdgeInsets.only(
-                  left: 10,
-                  right: 22,
-                ),
                 icon: Icon(Icons.check,
                     size: 30,
                     color: widget.darkTheme ? Colors.white : Colors.black),
@@ -102,6 +98,7 @@ class _ImageCropperState extends State<ImageCropper> {
                   }
                 },
               ),
+              const SizedBox(width: 20),
             ],
           ),
           body: SizedBox(
@@ -141,7 +138,7 @@ class _ImageCropperState extends State<ImageCropper> {
                               ),
                               icon: Icon(
                                 Icons.portrait,
-                                size: 25,
+                                size: 30,
                                 color: isLandscape
                                     ? Colors.grey
                                     : widget.darkTheme
@@ -166,7 +163,7 @@ class _ImageCropperState extends State<ImageCropper> {
                               ),
                               icon: Icon(
                                 Icons.landscape,
-                                size: 25,
+                                size: 30,
                                 color: isLandscape
                                     ? widget.darkTheme
                                         ? Colors.white

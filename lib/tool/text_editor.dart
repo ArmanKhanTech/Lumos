@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:quill/data/constants.dart';
 import 'package:quill/utility/model.dart';
@@ -52,7 +51,7 @@ class _TextEditorState extends State<TextEditor> {
             ),
             actions: <Widget>[
               IconButton(
-                icon: Icon(FontAwesomeIcons.alignLeft,
+                icon: Icon(Icons.align_horizontal_left,
                     color: align == TextAlign.left
                         ? widget.darkTheme
                             ? Colors.white
@@ -64,8 +63,9 @@ class _TextEditorState extends State<TextEditor> {
                   });
                 },
               ),
+              const SizedBox(width: 10),
               IconButton(
-                icon: Icon(FontAwesomeIcons.alignCenter,
+                icon: Icon(Icons.align_horizontal_center,
                     color: align == TextAlign.center
                         ? widget.darkTheme
                             ? Colors.white
@@ -77,8 +77,9 @@ class _TextEditorState extends State<TextEditor> {
                   });
                 },
               ),
+              const SizedBox(width: 10),
               IconButton(
-                icon: Icon(FontAwesomeIcons.alignRight,
+                icon: Icon(Icons.align_horizontal_right,
                     color: align == TextAlign.right
                         ? widget.darkTheme
                             ? Colors.white
@@ -90,6 +91,7 @@ class _TextEditorState extends State<TextEditor> {
                   });
                 },
               ),
+              const SizedBox(width: 10),
               IconButton(
                 icon: const Icon(Icons.check, size: 30),
                 onPressed: () {
@@ -105,8 +107,8 @@ class _TextEditorState extends State<TextEditor> {
                   );
                 },
                 color: widget.darkTheme ? Colors.white : Colors.black,
-                padding: const EdgeInsets.only(right: 22, left: 10),
-              )
+              ),
+              const SizedBox(width: 20),
             ],
           ),
           body: SafeArea(

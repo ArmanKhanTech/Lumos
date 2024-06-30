@@ -144,8 +144,8 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                       icon: Icon(Icons.crop,
                           color: widget.darkTheme ? Colors.white : Colors.black,
                           size: 30)),
+                  const SizedBox(width: 10),
                   IconButton(
-                    padding: const EdgeInsets.only(left: 10, right: 22),
                     icon: Icon(Icons.done,
                         color: widget.darkTheme ? Colors.white : Colors.black,
                         size: 30),
@@ -166,6 +166,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                       Navigator.of(context).pop(saveImages);
                     },
                   ),
+                  const SizedBox(width: 20),
                 ],
               ),
               body: Center(
@@ -399,7 +400,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                                           vertical: 4,
                                         ),
                                         icon: Icon(Icons.portrait,
-                                            size: 25,
+                                            size: 30,
                                             color: isLandscape
                                                 ? Colors.grey
                                                 : widget.darkTheme
@@ -422,7 +423,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                                           vertical: 4,
                                         ),
                                         icon: Icon(Icons.landscape,
-                                            size: 25,
+                                            size: 30,
                                             color: isLandscape
                                                 ? widget.darkTheme
                                                     ? Colors.white

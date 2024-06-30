@@ -61,10 +61,6 @@ class _ImageFiltersState extends State<ImageFilters> {
             ),
             actions: [
               IconButton(
-                padding: const EdgeInsets.only(
-                  left: 10,
-                  right: 22,
-                ),
                 icon: Icon(Icons.check,
                     size: 30,
                     color: widget.darkTheme ? Colors.white : Colors.black),
@@ -73,6 +69,7 @@ class _ImageFiltersState extends State<ImageFilters> {
                   if (mounted) Navigator.pop(context, data);
                 },
               ),
+              const SizedBox(width: 20),
             ],
           ),
           body: Center(

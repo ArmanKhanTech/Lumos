@@ -17,9 +17,6 @@ class Constants {
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: lightPrimary,
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: lightAccent,
-    ),
     scaffoldBackgroundColor: lightBG,
     bottomAppBarTheme: const BottomAppBarTheme(
       elevation: 0,
@@ -35,9 +32,6 @@ class Constants {
         statusBarColor: Colors.white,
         statusBarIconBrightness: Brightness.dark,
       ),
-      actionsIconTheme: IconThemeData(
-        color: Colors.black,
-      ),
     ),
     colorScheme: ColorScheme.fromSwatch()
         .copyWith(
@@ -47,12 +41,7 @@ class Constants {
   );
 
   static ThemeData darkTheme = ThemeData(
-    iconTheme: const IconThemeData(color: Colors.white),
-    primaryColor: darkPrimary,
     scaffoldBackgroundColor: darkBG,
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: darkAccent,
-    ),
     bottomAppBarTheme: const BottomAppBarTheme(
       elevation: 0,
       color: darkBG,

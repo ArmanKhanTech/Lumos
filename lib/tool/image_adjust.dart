@@ -68,10 +68,6 @@ class _ImageAdjustState extends State<ImageAdjust> {
             ),
             actions: [
               IconButton(
-                padding: const EdgeInsets.only(
-                  left: 10,
-                  right: 22,
-                ),
                 color: widget.darkTheme ? Colors.white : Colors.black,
                 icon: const Icon(Icons.check, size: 30),
                 onPressed: () async {
@@ -79,6 +75,7 @@ class _ImageAdjustState extends State<ImageAdjust> {
                   if (mounted) Navigator.pop(context, data);
                 },
               ),
+              const SizedBox(width: 20),
             ],
           ),
           body: Center(

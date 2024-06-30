@@ -243,6 +243,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                     setState(() {});
                   },
                 ),
+                const SizedBox(width: 10),
                 IconButton(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   icon: Icon(Icons.redo,
@@ -261,8 +262,8 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                     setState(() {});
                   },
                 ),
+                const SizedBox(width: 10),
                 IconButton(
-                  padding: const EdgeInsets.only(left: 10, right: 22),
                   icon: Icon(Icons.done,
                       color: widget.darkTheme ? Colors.white : Colors.black,
                       size: 30),
@@ -279,6 +280,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                     }
                   },
                 ),
+                const SizedBox(width: 20),
               ],
             ),
             body: Container(
