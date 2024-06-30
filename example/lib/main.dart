@@ -58,9 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
           background: EditorBackground.blur,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
-            crop: true,
+            crop: false,
             rotate: true,
-            brush: false,
             emoji: true,
             filters: true,
             flip: true,
@@ -94,9 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
           background: EditorBackground.none,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
-            crop: true,
+            crop: false,
             rotate: true,
-            brush: false,
             emoji: true,
             filters: true,
             flip: true,

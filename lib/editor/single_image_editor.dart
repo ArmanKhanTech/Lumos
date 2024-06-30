@@ -47,6 +47,7 @@ class SingleImageEditor extends StatefulWidget {
       {super.key,
       required this.image,
       this.features = const ImageEditorFeatures(
+        adjust: true,
         crop: true,
         blur: true,
         emoji: true,
@@ -382,49 +383,51 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      BottomButton(
-                        icon: CupertinoIcons.slider_horizontal_3,
-                        text: 'Adjust',
-                        darkTheme: widget.darkTheme,
-                        onTap: () async {
-                          resetTransformation();
-                          LoadingScreen(scaffoldGlobalKey, widget.darkTheme)
-                              .show();
-                          var mergedImage = await getMergedImage();
+                      if (widget.features.adjust)
+                        BottomButton(
+                          icon: CupertinoIcons.slider_horizontal_3,
+                          text: 'Adjust',
+                          darkTheme: widget.darkTheme,
+                          onTap: () async {
+                            resetTransformation();
+                            LoadingScreen(scaffoldGlobalKey, widget.darkTheme)
+                                .show();
+                            var mergedImage = await getMergedImage();
 
-                          if (!mounted) {
-                            return;
-                          }
+                            if (!mounted) {
+                              return;
+                            }
 
-                          Uint8List? adjustedImage = await Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                              builder: (context) => ImageAdjust(
-                                image: mergedImage!,
-                                darkTheme: widget.darkTheme,
+                            Uint8List? adjustedImage = await Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => ImageAdjust(
+                                  image: mergedImage!,
+                                  darkTheme: widget.darkTheme,
+                                ),
                               ),
-                            ),
-                          );
+                            );
 
-                          LoadingScreen(scaffoldGlobalKey, widget.darkTheme)
-                              .hide();
-                          if (adjustedImage == null) {
-                            return;
-                          }
+                            LoadingScreen(scaffoldGlobalKey, widget.darkTheme)
+                                .hide();
+                            if (adjustedImage == null) {
+                              return;
+                            }
 
-                          removedLayers.clear();
-                          undoLayers.clear();
+                            removedLayers.clear();
+                            undoLayers.clear();
 
-                          var layer = BackgroundLayerData(
-                            file: ImageItem(adjustedImage, widget.viewportSize),
-                          );
+                            var layer = BackgroundLayerData(
+                              file:
+                                  ImageItem(adjustedImage, widget.viewportSize),
+                            );
 
-                          layers.add(layer);
-                          await layer.file.status;
+                            layers.add(layer);
+                            await layer.file.status;
 
-                          setState(() {});
-                        },
-                      ),
+                            setState(() {});
+                          },
+                        ),
                       if (widget.features.crop)
                         BottomButton(
                           icon: Icons.crop,

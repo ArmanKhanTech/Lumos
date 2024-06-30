@@ -12,23 +12,12 @@ class AspectRatioOption {
 }
 
 class ImageEditorFeatures {
-  final bool crop,
-      text,
-      brush,
-      flip,
-      rotate,
-      blur,
-      filters,
-      emoji,
-      pickFromGallery,
-      captureFromCamera;
+  final bool crop, text, adjust, flip, rotate, blur, filters, emoji;
 
   const ImageEditorFeatures({
-    this.pickFromGallery = false,
-    this.captureFromCamera = false,
     this.crop = false,
     this.blur = false,
-    this.brush = false,
+    this.adjust = false,
     this.emoji = false,
     this.filters = false,
     this.flip = false,

@@ -34,6 +34,7 @@ class MultiImageEditor extends StatefulWidget {
     this.features = const ImageEditorFeatures(
       crop: true,
       blur: true,
+      adjust: true,
       emoji: true,
       filters: true,
       flip: true,
@@ -63,14 +64,6 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
   List<GlobalKey<ExtendedImageEditorState>> editorKey = [];
 
   int index = 0;
-
-  final List<AspectRatioOption> availableRatios = const [
-    AspectRatioOption(title: '1:1', ratio: 1),
-    AspectRatioOption(title: '4:3', ratio: 4 / 3),
-    AspectRatioOption(title: '5:4', ratio: 5 / 4),
-    AspectRatioOption(title: '7:5', ratio: 7 / 5),
-    AspectRatioOption(title: '16:9', ratio: 16 / 9),
-  ];
 
   double? aspectRatio;
   double? aspectRatioOriginal;
@@ -131,15 +124,19 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                       fontSize: 20),
                 ),
                 actions: [
-                  IconButton(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      onPressed: () {
-                        crop = !crop;
-                        setState(() {});
-                      },
-                      icon: Icon(Icons.crop,
-                          color: widget.darkTheme ? Colors.white : Colors.black,
-                          size: 30)),
+                  widget.features.crop
+                      ? IconButton(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          onPressed: () {
+                            crop = !crop;
+                            setState(() {});
+                          },
+                          icon: Icon(Icons.crop,
+                              color: widget.darkTheme
+                                  ? Colors.white
+                                  : Colors.black,
+                              size: 30))
+                      : const SizedBox(),
                   const SizedBox(width: 10),
                   IconButton(
                     icon: Icon(Icons.done,
@@ -211,10 +208,13 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                                                           image: image,
                                                           viewportSize: widget
                                                               .viewportSize,
-                                                          darkTheme:
-                                                              widget.darkTheme,
+                                                          darkTheme: widget
+                                                              .darkTheme,
                                                           background:
                                                               widget.background,
+                                                          cropAvailableRatios:
+                                                              widget
+                                                                  .cropAvailableRatios,
                                                           features:
                                                               widget.features),
                                                 ),
@@ -431,7 +431,8 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                                           setState(() {});
                                         },
                                       ),
-                                    for (var ratio in availableRatios)
+                                    for (var ratio
+                                        in widget.cropAvailableRatios)
                                       imageRatioButton(
                                           ratio.ratio, ratio.title),
                                   ],
