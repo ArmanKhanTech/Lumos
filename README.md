@@ -181,7 +181,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Arman Khan - ak2341776@gmail.com
 
-Project Link - [https://github.com/ArmanKhanTech/Pixel](https://github.com/ArmanKhanTech/Pixelate)
+Project Link - [https://github.com/ArmanKhanTech/Lumos](https://github.com/ArmanKhanTech/Lumos)
 
 
 
