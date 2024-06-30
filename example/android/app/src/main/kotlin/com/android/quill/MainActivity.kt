@@ -1,4 +1,4 @@
-package com.android.quill
+package com.android.pixel
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,7 +1,7 @@
-name: quill
+name: pixel
 description: "A Flutter image editor package."
 version: 0.0.1
-homepage: https://https://github.com/ArmanKhanTech/Quill
+homepage: https://https://github.com/ArmanKhanTech/Pixel
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -28,6 +28,3 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 flutter:
-  platforms:
-    android:
-    ios:

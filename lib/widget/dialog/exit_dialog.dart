@@ -1,7 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 
-import 'package:quill/widget/button/animated_on_tap_button.dart';
+import 'package:pixel/widget/button/animated_on_tap_button.dart';
 
 Future<dynamic> exitDialog(BuildContext context) {
   return showDialog(

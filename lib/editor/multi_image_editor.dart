@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 
-import 'package:quill/data/constants.dart';
-import 'package:quill/editor/single_image_editor.dart';
-import 'package:quill/utility/image_item.dart';
-import 'package:quill/utility/model.dart';
-import 'package:quill/widget/dialog/exit_dialog.dart';
-import 'package:quill/widget/indicator/progress_indicator.dart';
+import 'package:pixel/data/constants.dart';
+import 'package:pixel/editor/single_image_editor.dart';
+import 'package:pixel/utility/image_item.dart';
+import 'package:pixel/utility/model.dart';
+import 'package:pixel/widget/dialog/exit_dialog.dart';
+import 'package:pixel/widget/indicator/progress_indicator.dart';
 
 import '../tool/image_filters.dart';
 

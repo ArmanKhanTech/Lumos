@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:quill/editor/single_image_editor.dart';
-import 'package:quill/utility/model.dart';
+import 'package:pixel/editor/single_image_editor.dart';
+import 'package:pixel/utility/model.dart';
 
 import '../picker/color_picker.dart';
 

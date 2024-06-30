@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 
-import 'package:quill/data/constants.dart';
-import 'package:quill/utility/model.dart';
+import 'package:pixel/data/constants.dart';
+import 'package:pixel/utility/model.dart';
 
 class ImageCropper extends StatefulWidget {
   final Uint8List image;

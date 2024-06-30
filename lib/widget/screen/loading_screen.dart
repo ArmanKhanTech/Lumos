@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quill/widget/indicator/progress_indicator.dart';
+import 'package:pixel/widget/indicator/progress_indicator.dart';
 
 class LoadingScreen {
   final GlobalKey globalKey;

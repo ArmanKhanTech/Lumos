@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quill/utility/image_item.dart';
+import 'package:pixel/utility/image_item.dart';
 
 class AspectRatioOption {
   final String title;
