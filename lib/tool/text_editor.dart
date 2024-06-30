@@ -25,9 +25,13 @@ class _TextEditorState extends State<TextEditor> {
   TextAlign align = TextAlign.left;
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     currentColor = widget.darkTheme ? Colors.white : Colors.black;
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Theme(
         data: widget.darkTheme ? Constants.darkTheme : Constants.lightTheme,
         child: Scaffold(
@@ -240,7 +244,7 @@ class _TextEditorState extends State<TextEditor> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          'Black/White Color',
+                          'Text Opacity',
                           style: TextStyle(
                             color:
                                 widget.darkTheme ? Colors.white : Colors.black,

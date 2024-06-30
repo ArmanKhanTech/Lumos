@@ -54,8 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
       CupertinoPageRoute(
         builder: (context) => SingleImageEditor(
           image: image,
-          darkTheme: true,
-          background: EditorBackground.blur,
+          darkTheme: false,
+          background: EditorBackground.none,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
             crop: true,
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
       CupertinoPageRoute(
         builder: (context) => MultiImageEditor(
           images: images,
-          darkTheme: false,
+          darkTheme: true,
           background: EditorBackground.none,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
