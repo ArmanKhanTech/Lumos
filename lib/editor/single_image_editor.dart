@@ -14,7 +14,6 @@ import 'package:quill/widget/dialog/exit_dialog.dart';
 import 'package:quill/layer/background_blur_layer.dart';
 import 'package:quill/layer/background_layer.dart';
 import 'package:quill/layer/emoji_layer.dart';
-import 'package:quill/layer/image_layer.dart';
 import 'package:quill/layer/text_layer.dart';
 import 'package:quill/widget/picker/emoji_picker.dart';
 import 'package:quill/widget/picker/color_picker.dart';
@@ -138,15 +137,6 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
       children: layers.map<Widget>((layerItem) {
         if (layerItem is BackgroundLayerData) {
           return BackgroundLayer(
-            layerData: layerItem,
-            onUpdate: () {
-              setState(() {});
-            },
-          );
-        }
-
-        if (layerItem is ImageLayerData) {
-          return ImageLayer(
             layerData: layerItem,
             onUpdate: () {
               setState(() {});

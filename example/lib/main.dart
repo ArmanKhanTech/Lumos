@@ -58,7 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
           background: EditorBackground.blur,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
-            crop: false,
+            crop: true,
+            adjust: true,
             rotate: true,
             emoji: true,
             filters: true,
@@ -93,7 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
           background: EditorBackground.none,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
-            crop: false,
+            crop: true,
+            adjust: true,
             rotate: true,
             emoji: true,
             filters: true,
@@ -103,7 +105,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           cropAvailableRatios: const [
             AspectRatioOption(title: 'Freeform'),
-            AspectRatioOption(title: '1:1', ratio: 1),
             AspectRatioOption(title: '4:3', ratio: 4 / 3),
             AspectRatioOption(title: '5:4', ratio: 5 / 4),
             AspectRatioOption(title: '7:5', ratio: 7 / 5),

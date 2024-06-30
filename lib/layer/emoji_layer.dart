@@ -38,6 +38,7 @@ class _EmojiLayerState extends State<EmojiLayer> {
         onTap: () {
           showModalBottomSheet(
             context: context,
+            backgroundColor: widget.darkTheme ? Colors.black : Colors.white,
             builder: (context) {
               return EmojiLayerDialog(
                 index: layers.indexOf(widget.layerData),

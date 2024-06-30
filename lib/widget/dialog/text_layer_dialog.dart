@@ -23,7 +23,7 @@ class TextLayerDialog extends StatefulWidget {
   });
 
   @override
-  createState() => _TextLayerDialogState();
+  State<TextLayerDialog> createState() => _TextLayerDialogState();
 }
 
 class _TextLayerDialogState extends State<TextLayerDialog> {
@@ -37,7 +37,7 @@ class _TextLayerDialogState extends State<TextLayerDialog> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 450,
+      height: 435,
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [

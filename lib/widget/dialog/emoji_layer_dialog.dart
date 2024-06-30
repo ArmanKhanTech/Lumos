@@ -35,7 +35,7 @@ class _EmojiLayerDialogState extends State<EmojiLayerDialog> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 180,
+      height: 165,
       child: Column(
         children: [
           const SizedBox(height: 20),
