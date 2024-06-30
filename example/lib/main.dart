@@ -42,12 +42,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final ImagePicker picker = ImagePicker();
 
+  // The edited image or images are returned as Uint8List.
   Uint8List? editedImage;
   List<Uint8List>? editedImages;
 
   Future<void> uploadPostSingleImage(
       {BuildContext? context, required XFile image}) async {
-    // Open the single-image editor
+    // Open the single-image editor.
     editedImage = await Navigator.push(
       context!,
       CupertinoPageRoute(
@@ -75,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
     BuildContext? context,
     required List<XFile> images,
   }) async {
-    // Open the multi-image editor
+    // Open the multi-image editor.
     editedImages = await Navigator.push(
       context!,
       CupertinoPageRoute(
