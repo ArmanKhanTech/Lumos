@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 enum EditorBackground {
-  colored,
+  none,
   gradient,
   blur,
 }
@@ -32,10 +32,8 @@ class Constants {
       systemOverlayStyle: SystemUiOverlayStyle(
         systemNavigationBarColor: Colors.white,
         systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarDividerColor: null,
         statusBarColor: Colors.white,
         statusBarIconBrightness: Brightness.dark,
-        statusBarBrightness: Brightness.dark,
       ),
       actionsIconTheme: IconThemeData(
         color: Colors.black,
@@ -66,10 +64,8 @@ class Constants {
         systemOverlayStyle: SystemUiOverlayStyle(
           systemNavigationBarColor: Colors.black,
           systemNavigationBarIconBrightness: Brightness.light,
-          systemNavigationBarDividerColor: null,
           statusBarColor: Colors.black,
           statusBarIconBrightness: Brightness.light,
-          statusBarBrightness: Brightness.light,
         ),
         actionsIconTheme: IconThemeData(
           color: Colors.white,

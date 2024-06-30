@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../data/layer.dart';
+import 'package:quill/utility/model.dart';
 
 class BackgroundLayer extends StatefulWidget {
   final BackgroundLayerData layerData;

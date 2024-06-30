@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:quill/editor/single_image_editor.dart';
 
-import '../../data/layer.dart';
+import 'package:quill/editor/single_image_editor.dart';
+import 'package:quill/utility/model.dart';
 
 class ImageLayerDialog extends StatefulWidget {
   final int index;
+
   final ImageLayerData layerData;
+
   final Function onUpdate;
 
   const ImageLayerDialog({

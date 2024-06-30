@@ -1,16 +1,16 @@
+// ignore_for_file: use_build_context_synchronously
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_pixels/image_pixels.dart';
-import 'package:quill/utility/image_item.dart';
 import 'package:screenshot/screenshot.dart';
 
-import 'package:quill/data/layer.dart';
+import 'package:quill/utility/image_item.dart';
+import 'package:quill/widget/dialog/exit_dialog.dart';
 import 'package:quill/layer/background_blur_layer.dart';
 import 'package:quill/layer/background_layer.dart';
 import 'package:quill/layer/emoji_layer.dart';
@@ -19,8 +19,7 @@ import 'package:quill/layer/text_layer.dart';
 import 'package:quill/widget/picker/emoji_picker.dart';
 import 'package:quill/widget/picker/color_picker.dart';
 import 'package:quill/tool/text_editor.dart';
-import 'package:quill/utility/utilities.dart';
-import 'package:quill/widget/button/animated_on_tap_button.dart';
+import 'package:quill/utility/model.dart';
 import 'package:quill/widget/screen/loading_screen.dart';
 import 'package:quill/data/constants.dart';
 import 'package:quill/tool/image_filters.dart';
@@ -46,7 +45,7 @@ class SingleImageEditor extends StatefulWidget {
 
   const SingleImageEditor(
       {super.key,
-      this.image,
+      required this.image,
       this.features = const ImageEditorFeatures(
         crop: true,
         blur: true,
@@ -70,10 +69,10 @@ class SingleImageEditor extends StatefulWidget {
       required this.background});
 
   @override
-  createState() => SingleImageEditorState();
+  State<SingleImageEditor> createState() => _SingleImageEditorState();
 }
 
-class SingleImageEditorState extends State<SingleImageEditor> {
+class _SingleImageEditorState extends State<SingleImageEditor> {
   ImageItem currentImage = ImageItem();
 
   Offset offset1 = Offset.zero;
@@ -89,18 +88,19 @@ class SingleImageEditorState extends State<SingleImageEditor> {
   late Color topLeftColor, bottomRightColor;
 
   @override
-  void dispose() {
-    layers.clear();
-    super.dispose();
-  }
-
-  @override
   void initState() {
     super.initState();
     if (widget.image != null) {
       loadImage(widget.image!);
     }
-    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    layers.clear();
+    undoLayers.clear();
+    removedLayers.clear();
+    super.dispose();
   }
 
   double flipValue = 0;
@@ -132,94 +132,6 @@ class SingleImageEditorState extends State<SingleImageEditor> {
     );
   }
 
-  Future<dynamic> exitDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        barrierColor: Colors.black38,
-        barrierDismissible: true,
-        builder: (c) => Dialog(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              insetAnimationDuration: const Duration(milliseconds: 300),
-              insetAnimationCurve: Curves.ease,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: BlurryContainer(
-                  color: Colors.black.withOpacity(0.15),
-                  blur: 5,
-                  padding: const EdgeInsets.all(20),
-                  borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const Text(
-                        'Cancel?',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            letterSpacing: 0.5),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "If you go back now, you'll lose all the edits you've made.",
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white54,
-                            letterSpacing: 0.1),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      AnimatedOnTapButton(
-                        onTap: () async {
-                          if (mounted) {
-                            Navigator.pop(c, true);
-                            Navigator.pop(context);
-                          }
-                        },
-                        child: Text(
-                          'Yes',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.redAccent.shade200,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.1),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 22,
-                        child: Divider(
-                          color: Colors.white,
-                        ),
-                      ),
-                      AnimatedOnTapButton(
-                        onTap: () {
-                          Navigator.pop(c, true);
-                        },
-                        child: const Text(
-                          'No',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.5),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ));
-  }
-
-  // TODO: Fix having to click undo multiple times
   @override
   Widget build(BuildContext context) {
     var layersStack = Stack(
@@ -264,6 +176,7 @@ class SingleImageEditorState extends State<SingleImageEditor> {
         if (layerItem is TextLayerData) {
           return TextLayer(
             layerData: layerItem,
+            darkTheme: widget.darkTheme,
             onUpdate: () {
               setState(() {});
             },
@@ -279,10 +192,9 @@ class SingleImageEditorState extends State<SingleImageEditor> {
     pixelRatio = max(widthRatio, heightRatio);
 
     return PopScope(
+        canPop: false,
         onPopInvoked: (onPopInvoked) async {
-          if (onPopInvoked) {
-            return await exitDialog(context);
-          }
+          return await exitDialog(context);
         },
         child: Theme(
           data: widget.darkTheme ? Constants.darkTheme : Constants.lightTheme,
@@ -417,7 +329,7 @@ class SingleImageEditorState extends State<SingleImageEditor> {
                             ),
                           )
                         : const SizedBox(),
-                    // TODO: FIx size
+                    // TODO: Fix size
                     Center(
                       child: SizedBox(
                           width: currentImage.width / pixelRatio,
@@ -457,7 +369,7 @@ class SingleImageEditorState extends State<SingleImageEditor> {
                 )),
             bottomNavigationBar: Container(
               alignment: Alignment.bottomCenter,
-              height: 78 + MediaQuery.of(context).padding.bottom,
+              height: 75,
               padding: const EdgeInsets.only(top: 15),
               decoration: BoxDecoration(
                 color: widget.darkTheme ? Colors.black : Colors.white,

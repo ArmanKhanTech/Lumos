@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:quill/editor/single_image_editor.dart';
 import 'package:quill/widget/dialog/image_layer_dialog.dart';
-
-import '../data/layer.dart';
+import 'package:quill/utility/model.dart';
 
 class ImageLayer extends StatefulWidget {
   final ImageLayerData layerData;

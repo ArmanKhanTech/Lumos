@@ -1,10 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 
 import 'package:quill/data/constants.dart';
-import 'package:quill/utility/utilities.dart';
+import 'package:quill/utility/model.dart';
 
 class ImageCropper extends StatefulWidget {
   final Uint8List image;
@@ -51,7 +52,12 @@ class _ImageCropperState extends State<ImageCropper> {
     controller.currentState?.rotate(right: true);
   }
 
-  // TODO: Fix text color
+  @override
+  void dispose() {
+    controller.currentState?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -137,10 +143,10 @@ class _ImageCropperState extends State<ImageCropper> {
                                 Icons.portrait,
                                 size: 25,
                                 color: isLandscape
-                                    ? widget.darkTheme
+                                    ? Colors.grey
+                                    : widget.darkTheme
                                         ? Colors.white
-                                        : Colors.black
-                                    : Colors.grey,
+                                        : Colors.black,
                               ),
                               onPressed: () {
                                 isLandscape = false;

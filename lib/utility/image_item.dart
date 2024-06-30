@@ -22,7 +22,7 @@ class ImageItem {
 
   Future get status => loader.future;
 
-  Future<bool> load(dynamic imageFile, Size viewportSize) async {
+  Future load(dynamic imageFile, Size viewportSize) async {
     loader = Completer();
     dynamic decodedImage;
 

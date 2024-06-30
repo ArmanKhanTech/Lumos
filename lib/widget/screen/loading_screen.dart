@@ -6,8 +6,14 @@ class LoadingScreen {
 
   final bool darkTheme;
 
-  // TODO: Implement factory
-  LoadingScreen(this.globalKey, this.darkTheme);
+  static LoadingScreen? instance;
+
+  LoadingScreen._(this.globalKey, this.darkTheme);
+
+  factory LoadingScreen(GlobalKey globalKey, bool darkTheme) {
+    instance ??= LoadingScreen._(globalKey, darkTheme);
+    return instance!;
+  }
 
   show([String? text]) {
     if (globalKey.currentContext == null) {
@@ -17,9 +23,7 @@ class LoadingScreen {
     showDialog<String>(
         context: globalKey.currentContext!,
         builder: (BuildContext context) => Scaffold(
-              backgroundColor: darkTheme
-                  ? Colors.black.withOpacity(0.9)
-                  : Colors.white.withOpacity(0.9),
+              backgroundColor: darkTheme ? Colors.black : Colors.white,
               body: Center(
                 child: circularProgress(
                   context,

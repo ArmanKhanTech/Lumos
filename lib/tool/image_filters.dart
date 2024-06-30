@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:colorfilter_generator/colorfilter_generator.dart';
 import 'package:colorfilter_generator/presets.dart';
 import 'package:flutter/material.dart';
@@ -98,8 +99,16 @@ class _ImageFiltersState extends State<ImageFilters> {
           ),
           bottomNavigationBar: SafeArea(
             child: SizedBox(
-              height: 140,
+              height: 185,
               child: Column(children: [
+                const SizedBox(height: 10),
+                Text(
+                  selectedFilter.name,
+                  style: TextStyle(
+                    color: widget.darkTheme ? Colors.white : Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
                 const SizedBox(height: 10),
                 SizedBox(
                   height: 20,
@@ -207,8 +216,8 @@ class FilterAppliedImage extends StatelessWidget {
       }
 
       final ImageEditorOption option = ImageEditorOption();
-
       option.addOption(ColorOption(matrix: filter.matrix));
+
       ImageEditor.editImage(
         image: image,
         imageEditorOption: option,

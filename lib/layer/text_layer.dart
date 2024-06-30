@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 
 import 'package:quill/editor/single_image_editor.dart';
+import 'package:quill/utility/model.dart';
 import 'package:quill/widget/dialog/text_layer_dialog.dart';
-
-import '../data/layer.dart';
 
 class TextLayer extends StatefulWidget {
   final TextLayerData layerData;
+
   final VoidCallback? onUpdate;
+
+  final bool darkTheme;
 
   const TextLayer({
     super.key,
     required this.layerData,
     this.onUpdate,
+    required this.darkTheme,
   });
   @override
   createState() => _TextViewState();
 }
 
 class _TextViewState extends State<TextLayer> {
-  double initialSize = 0;
-  double initialRotation = 0;
+  double initialSize = 0, initialRotation = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +37,7 @@ class _TextViewState extends State<TextLayer> {
           showModalBottomSheet(
               context: context,
               isScrollControlled: true,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  topLeft: Radius.circular(20),
-                ),
-              ),
+              backgroundColor: widget.darkTheme ? Colors.black : Colors.white,
               builder: (BuildContext context) {
                 return SingleChildScrollView(
                     child: Container(
@@ -49,6 +46,7 @@ class _TextViewState extends State<TextLayer> {
                   child: TextLayerDialog(
                     index: layers.indexOf(widget.layerData),
                     layer: widget.layerData,
+                    darkTheme: widget.darkTheme,
                     onUpdate: () {
                       if (widget.onUpdate != null) widget.onUpdate!();
                       setState(() {});

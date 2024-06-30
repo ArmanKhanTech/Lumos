@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:colorfilter_generator/addons.dart';
 import 'package:colorfilter_generator/colorfilter_generator.dart';
 import 'package:flutter/cupertino.dart';
@@ -97,10 +98,18 @@ class _ImageAdjustState extends State<ImageAdjust> {
             ),
           ),
           bottomNavigationBar: SizedBox(
-            height: 105,
+            height: 145,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                const SizedBox(height: 10),
+                Text(
+                  currentFilter,
+                  style: TextStyle(
+                    color: widget.darkTheme ? Colors.white : Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
                 const SizedBox(height: 10),
                 SizedBox(
                   height: 20,

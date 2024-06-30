@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:quill/data/constants.dart';
+import 'package:quill/utility/model.dart';
 
-import '../data/layer.dart';
 import '../widget/picker/color_picker.dart';
 
 class TextEditor extends StatefulWidget {

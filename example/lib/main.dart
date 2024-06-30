@@ -4,10 +4,10 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:quill/data/constants.dart';
 
+import 'package:quill/data/constants.dart';
 import 'package:quill/quill.dart';
-import 'package:quill/utility/utilities.dart';
+import 'package:quill/utility/model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Quill Example',
+      title: 'Quill',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Quill Demo'),
+      home: const MyHomePage(title: 'Quill Image Editor'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -42,10 +42,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final ImagePicker picker = ImagePicker();
 
-  Future<Uint8List> uploadPostSingleImage(
+  Uint8List? editedImage;
+  List<Uint8List>? editedImages;
+
+  Future<void> uploadPostSingleImage(
       {BuildContext? context, required XFile image}) async {
     // Open the single-image editor
-    Uint8List editedImage = await Navigator.push(
+    editedImage = await Navigator.push(
       context!,
       CupertinoPageRoute(
         builder: (context) => SingleImageEditor(
@@ -66,22 +69,20 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
-
-    return editedImage;
   }
 
-  Future<Uint8List> uploadPostMultipleImages({
+  Future<void> uploadPostMultipleImages({
     BuildContext? context,
     required List<XFile> images,
   }) async {
     // Open the multi-image editor
-    Uint8List editedImages = await Navigator.push(
+    editedImages = await Navigator.push(
       context!,
       CupertinoPageRoute(
         builder: (context) => MultiImageEditor(
           images: images,
-          darkTheme: true,
-          background: EditorBackground.gradient,
+          darkTheme: false,
+          background: EditorBackground.none,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
             crop: true,
@@ -97,8 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
-
-    return editedImages;
   }
 
   @override
@@ -109,8 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          padding: const EdgeInsets.all(20),
           children: <Widget>[
             ElevatedButton(
               onPressed: () async {
@@ -121,6 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     context: context,
                     image: image,
                   );
+                  setState(() {});
                 }
               },
               child: const Text('Single Image Editor'),
@@ -129,13 +130,38 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () async {
                 final List<XFile> images = await picker.pickMultiImage();
-                await uploadPostMultipleImages(
-                  context: context,
-                  images: images,
-                );
+                if (images.isNotEmpty) {
+                  await uploadPostMultipleImages(
+                    context: context,
+                    images: images,
+                  );
+                  setState(() {});
+                }
               },
               child: const Text('Multiple Image Editor'),
             ),
+            const SizedBox(height: 20),
+            if (editedImage != null)
+              Image.memory(
+                editedImage!,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 4,
+                fit: BoxFit.cover,
+              ),
+            if (editedImages != null)
+              ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: editedImages!.length,
+                itemBuilder: (context, index) {
+                  return Image.memory(
+                    editedImages![index],
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
           ],
         ),
       ),

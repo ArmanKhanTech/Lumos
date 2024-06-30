@@ -10,8 +10,7 @@ class AnimatedOnTapButton extends StatefulWidget {
   final Function()? onLongPress;
 
   const AnimatedOnTapButton(
-      {Key? key, required this.onTap, required this.child, this.onLongPress})
-      : super(key: key);
+      {super.key, required this.onTap, required this.child, this.onLongPress});
 
   @override
   State<AnimatedOnTapButton> createState() => _AnimatedOnTapButtonState();
@@ -20,13 +19,13 @@ class AnimatedOnTapButton extends StatefulWidget {
 class _AnimatedOnTapButtonState extends State<AnimatedOnTapButton>
     with TickerProviderStateMixin {
   double squareScaleA = 1;
-  AnimationController? _controllerA;
-  Timer _timer = Timer(const Duration(milliseconds: 300), () {});
+  AnimationController? controller;
+  Timer timer = Timer(const Duration(milliseconds: 300), () {});
 
   @override
   void initState() {
     if (mounted) {
-      _controllerA = AnimationController(
+      controller = AnimationController(
         vsync: this,
         lowerBound: 0.95,
         upperBound: 1.0,
@@ -34,9 +33,9 @@ class _AnimatedOnTapButtonState extends State<AnimatedOnTapButton>
         duration: const Duration(milliseconds: 10),
       );
 
-      _controllerA?.addListener(() {
+      controller?.addListener(() {
         setState(() {
-          squareScaleA = _controllerA!.value;
+          squareScaleA = controller!.value;
         });
       });
 
@@ -47,8 +46,8 @@ class _AnimatedOnTapButtonState extends State<AnimatedOnTapButton>
   @override
   void dispose() {
     if (mounted) {
-      _controllerA!.dispose();
-      _timer.cancel();
+      controller!.dispose();
+      timer.cancel();
       super.dispose();
     }
   }
@@ -59,17 +58,17 @@ class _AnimatedOnTapButtonState extends State<AnimatedOnTapButton>
       behavior: HitTestBehavior.translucent,
       onTap: () {
         HapticFeedback.lightImpact();
-        _controllerA!.reverse();
+        controller!.reverse();
         widget.onTap();
       },
       onTapDown: (dp) {
-        _controllerA!.reverse();
+        controller!.reverse();
       },
       onTapUp: (dp) {
         try {
           if (mounted) {
-            _timer = Timer(const Duration(milliseconds: 100), () {
-              _controllerA!.fling();
+            timer = Timer(const Duration(milliseconds: 100), () {
+              controller!.fling();
             });
           }
         } catch (e) {
@@ -77,7 +76,7 @@ class _AnimatedOnTapButtonState extends State<AnimatedOnTapButton>
         }
       },
       onTapCancel: () {
-        _controllerA!.fling();
+        controller!.fling();
       },
       onLongPress: widget.onLongPress ?? () {},
       child: Transform.scale(

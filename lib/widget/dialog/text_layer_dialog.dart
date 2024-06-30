@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:quill/editor/single_image_editor.dart';
 
-import '../../data/layer.dart';
+import 'package:quill/editor/single_image_editor.dart';
+import 'package:quill/utility/model.dart';
+
 import '../picker/color_picker.dart';
 
 class TextLayerDialog extends StatefulWidget {
   final int index;
+
   final TextLayerData layer;
+
   final Function onUpdate;
+
+  final bool darkTheme;
 
   const TextLayerDialog({
     super.key,
     required this.layer,
     required this.index,
     required this.onUpdate,
+    required this.darkTheme,
   });
 
   @override
@@ -31,39 +37,30 @@ class _TextLayerDialogState extends State<TextLayerDialog> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: 450,
       padding: const EdgeInsets.symmetric(horizontal: 15),
-      decoration: const BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-          border: Border(
-            top: BorderSide(width: 1, color: Colors.white),
-            bottom: BorderSide(width: 0, color: Colors.white),
-            left: BorderSide(width: 0, color: Colors.white),
-            right: BorderSide(width: 0, color: Colors.white),
-          )),
       child: Column(
         children: [
           const SizedBox(
             height: 20,
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'Text Size',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: widget.darkTheme ? Colors.white : Colors.black,
                   fontSize: 18,
                 ),
               ),
             ),
           ),
           Slider(
-              activeColor: Colors.white,
+              activeColor: widget.darkTheme ? Colors.white : Colors.black,
               inactiveColor: Colors.grey,
+              thumbColor: widget.darkTheme ? Colors.white : Colors.black,
               value: widget.layer.size,
               min: 0.0,
               max: 100.0,
@@ -85,11 +82,11 @@ class _TextLayerDialogState extends State<TextLayerDialog> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text(
+              Text(
                 'Text Color',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: widget.darkTheme ? Colors.white : Colors.black,
                   fontSize: 18,
                 ),
               ),
@@ -118,16 +115,16 @@ class _TextLayerDialogState extends State<TextLayerDialog> {
                   },
                   child: const Text('Reset',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.red,
                         fontSize: 18,
                       )),
                 ),
               ]),
               const SizedBox(height: 10),
-              const Text(
+              Text(
                 'Text Background Color',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: widget.darkTheme ? Colors.white : Colors.black,
                   fontSize: 18,
                 ),
               ),
@@ -157,7 +154,7 @@ class _TextLayerDialogState extends State<TextLayerDialog> {
                   child: const Text(
                     'Reset',
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: Colors.red,
                       fontSize: 18,
                     ),
                   ),
@@ -166,24 +163,24 @@ class _TextLayerDialogState extends State<TextLayerDialog> {
             ]),
           ),
           const SizedBox(height: 10),
-          const Padding(
-            padding: EdgeInsets.only(left: 15),
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'Text Background Opacity',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: widget.darkTheme ? Colors.white : Colors.black,
                   fontSize: 18,
                 ),
               ),
             ),
           ),
           Slider(
-              activeColor: Colors.white,
+              activeColor: widget.darkTheme ? Colors.white : Colors.black,
               inactiveColor: Colors.grey,
               value: widget.layer.backgroundOpacity.toDouble(),
-              thumbColor: Colors.white,
+              thumbColor: widget.darkTheme ? Colors.white : Colors.black,
               min: 0.0,
               max: 100.0,
               onChanged: (v) {
@@ -202,7 +199,7 @@ class _TextLayerDialogState extends State<TextLayerDialog> {
                 },
                 child: const Text(
                   'Remove',
-                  style: TextStyle(color: Colors.red, fontSize: 20),
+                  style: TextStyle(color: Colors.red, fontSize: 18),
                 ),
               ),
             ),
