@@ -9,23 +9,23 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/ArmanKhanTech/Quill/">
-    <img src="https://github.com/ArmanKhanTech/Quill/assets/92728787/c6501dd6-e82c-4f17-9156-42a7cea979cd" alt="Logo" width="80" height="80" >
+  <a href="https://github.com/ArmanKhanTech/Pixel/">
+    <img src="https://github.com/ArmanKhanTech/Pixel/assets/92728787/c6501dd6-e82c-4f17-9156-42a7cea979cd" alt="Logo" width="80" height="80" >
   </a>
 
-  <h3 align="center">Quill</h3>
+  <h3 align="center">Pixel</h3>
   <p align="center">Status: Ongoing</p>
 
   <p align="center">
     A Flutter image editor package.
     <br />
     <br />
-    <a href="https://github.com/ArmanKhanTech/Quill"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ArmanKhanTech/Pixel"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/ArmanKhanTech/Quill/issues">Report a Bug</a>
+    <a href="https://github.com/ArmanKhanTech/Pixel/issues">Report a Bug</a>
     ·
-    <a href="https://github.com/ArmanKhanTech/Quill/issues">Request new Feature</a>
+    <a href="https://github.com/ArmanKhanTech/Pixel/issues">Request new Feature</a>
   </p>
 </div>
 <br />
@@ -48,7 +48,7 @@
 
 ## About the Project
 
-Easily integrate powerful image editing capabilities into your Flutter applications with Quill. This package empowers developers to seamlessly incorporate features like crop, rotate, flip, filters, and more directly into their apps, providing users with robust tools to enhance and customize images on the fly. Whether you're building a photo-sharing app, an e-commerce platform, or a creative tool, the Flutter Image Editor offers a versatile solution with an intuitive interface and efficient performance. Take control of image manipulation in your Flutter projects and elevate user experience with this flexible and easy-to-use package.
+Easily integrate powerful image editing capabilities into your Flutter applications with Pixel. This package empowers developers to seamlessly incorporate features like crop, rotate, flip, filters, and more directly into their apps, providing users with robust tools to enhance and customize images on the fly. Whether you're building a photo-sharing app, an e-commerce platform, or a creative tool, the Flutter Image Editor offers a versatile solution with an intuitive interface and efficient performance. Take control of image manipulation in your Flutter projects and elevate user experience with this flexible and easy-to-use package.
 
 <b>Key Features:<b>
 
@@ -185,20 +185,20 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Arman Khan - ak2341776@gmail.com
 
-Project Link - [https://github.com/ArmanKhanTech/Quill](https://github.com/ArmanKhanTech/Quill)
+Project Link - [https://github.com/ArmanKhanTech/Pixel](https://github.com/ArmanKhanTech/Pixel)
 
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/ArmanKhanTech/Quill.svg?style=for-the-badge
-[contributors-url]: https://github.com/ArmanKhanTech/Quill/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ArmanKhanTech/Quill.svg?style=for-the-badge
-[forks-url]: https://github.com/ArmanKhanTech/Quill/network/members
-[stars-shield]: https://img.shields.io/github/stars/ArmanKhanTech/Quill.svg?style=for-the-badge
-[stars-url]: https://github.com/ArmanKhanTech/Quill/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ArmanKhanTech/Quill.svg?style=for-the-badge
-[issues-url]: https://github.com/ArmanKhanTech/Quill/issues
-[license-shield]: https://img.shields.io/github/license/ArmanKhanTech/Quill.svg?style=for-the-badge
-[license-url]: https://github.com/ArmanKhanTech/Quill/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ArmanKhanTech/Pixel.svg?style=for-the-badge
+[contributors-url]: https://github.com/ArmanKhanTech/Pixel/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ArmanKhanTech/Pixel.svg?style=for-the-badge
+[forks-url]: https://github.com/ArmanKhanTech/Pixel/network/members
+[stars-shield]: https://img.shields.io/github/stars/ArmanKhanTech/Pixel.svg?style=for-the-badge
+[stars-url]: https://github.com/ArmanKhanTech/Pixel/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ArmanKhanTech/Pixel.svg?style=for-the-badge
+[issues-url]: https://github.com/ArmanKhanTech/Pixel/issues
+[license-shield]: https://img.shields.io/github/license/ArmanKhanTech/Pixel.svg?style=for-the-badge
+[license-url]: https://github.com/ArmanKhanTech/Pixel/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/arman-khan-25b624205/
 [Android]: https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white
