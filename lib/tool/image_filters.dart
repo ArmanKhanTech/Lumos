@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 import 'package:screenshot/screenshot.dart';
 
-import 'package:lumos/data/constants.dart';
+import 'package:lumos/utility/constants.dart';
 
 class ImageFilters extends StatefulWidget {
   final Uint8List image;
@@ -49,21 +49,17 @@ class _ImageFiltersState extends State<ImageFilters> {
                 Navigator.of(context).pop();
               },
               iconSize: 30.0,
-              color: widget.darkTheme ? Colors.white : Colors.black,
               padding: const EdgeInsets.only(bottom: 3),
             ),
-            title: Text(
+            title: const Text(
               'Filters',
               style: TextStyle(
-                color: widget.darkTheme ? Colors.white : Colors.black,
                 fontSize: 20,
               ),
             ),
             actions: [
               IconButton(
-                icon: Icon(Icons.check,
-                    size: 30,
-                    color: widget.darkTheme ? Colors.white : Colors.black),
+                icon: const Icon(Icons.check, size: 30),
                 onPressed: () async {
                   var data = await screenshotController.capture();
                   if (mounted) Navigator.pop(context, data);
@@ -96,7 +92,7 @@ class _ImageFiltersState extends State<ImageFilters> {
           ),
           bottomNavigationBar: SafeArea(
             child: SizedBox(
-              height: 185,
+              height: 180,
               child: Column(children: [
                 const SizedBox(height: 10),
                 Text(
@@ -123,8 +119,9 @@ class _ImageFiltersState extends State<ImageFilters> {
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 110,
+                Container(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  height: 100,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
@@ -160,17 +157,16 @@ class _ImageFiltersState extends State<ImageFilters> {
         Container(
           height: 60,
           width: 60,
-          margin:
-              const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+          margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(18),
             border: Border.all(
               color: color,
               width: 1,
             ),
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(16),
             child: FilterAppliedImage(
               image: widget.image,
               filter: filter,

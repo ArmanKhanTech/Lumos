@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lumos/editor/single_image_editor.dart';
-import 'package:lumos/utility/model.dart';
+import 'package:lumos/model/models.dart';
 
 import '../widget/dialog/emoji_layer_dialog.dart';
 

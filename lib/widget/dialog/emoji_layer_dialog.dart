@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lumos/editor/single_image_editor.dart';
-import 'package:lumos/utility/model.dart';
+import 'package:lumos/model/models.dart';
 
 class EmojiLayerDialog extends StatefulWidget {
   final int index;
@@ -21,7 +21,7 @@ class EmojiLayerDialog extends StatefulWidget {
   });
 
   @override
-  createState() => _EmojiLayerDialogState();
+  State<EmojiLayerDialog> createState() => _EmojiLayerDialogState();
 }
 
 class _EmojiLayerDialogState extends State<EmojiLayerDialog> {
@@ -35,7 +35,7 @@ class _EmojiLayerDialogState extends State<EmojiLayerDialog> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 165,
+      height: 160,
       child: Column(
         children: [
           const SizedBox(height: 20),

@@ -1,8 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 
-import 'package:lumos/data/constants.dart';
-import 'package:lumos/utility/model.dart';
+import 'package:lumos/utility/constants.dart';
+import 'package:lumos/model/models.dart';
 
 import '../widget/picker/color_picker.dart';
 
@@ -43,13 +43,11 @@ class _TextEditorState extends State<TextEditor> {
                 Navigator.of(context).pop();
               },
               iconSize: 30.0,
-              color: widget.darkTheme ? Colors.white : Colors.black,
               padding: const EdgeInsets.only(bottom: 3),
             ),
-            title: Text(
-              'Text',
+            title: const Text(
+              'Add Text',
               style: TextStyle(
-                color: widget.darkTheme ? Colors.white : Colors.black,
                 fontSize: 20,
               ),
             ),
@@ -97,21 +95,19 @@ class _TextEditorState extends State<TextEditor> {
               ),
               const SizedBox(width: 10),
               IconButton(
-                icon: const Icon(Icons.check, size: 30),
-                onPressed: () {
-                  Navigator.pop(
-                    context,
-                    TextLayerData(
-                      background: Colors.transparent,
-                      text: name.text,
-                      color: currentColor,
-                      size: slider.toDouble(),
-                      align: align,
-                    ),
-                  );
-                },
-                color: widget.darkTheme ? Colors.white : Colors.black,
-              ),
+                  icon: const Icon(Icons.check, size: 30),
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                      TextLayerData(
+                        background: Colors.transparent,
+                        text: name.text,
+                        color: currentColor,
+                        size: slider.toDouble(),
+                        align: align,
+                      ),
+                    );
+                  }),
               const SizedBox(width: 20),
             ],
           ),

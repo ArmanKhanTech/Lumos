@@ -1,5 +1,5 @@
 name: lumos
-description: "Easily integrate powerful image editing capabilities into your Flutter applications with Lumos. This package empowers developers to seamlessly incorporate features like crop, rotate, flip, filters, and more directly into their apps, providing users with robust tools to enhance and customize images on the fly."
+description: "Easily integrate powerful image editing capabilities into your Flutter applications with Lumos."
 version: 0.0.2
 homepage: https://github.com/ArmanKhanTech/Lumos
 
@@ -11,7 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  blurrycontainer: ^2.1.0
   flutter_spinkit: ^5.2.0
   image_picker: ^1.0.2
   colorfilter_generator: ^0.0.8

@@ -5,9 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:lumos/data/constants.dart';
+import 'package:lumos/utility/constants.dart';
 import 'package:lumos/lumos.dart';
-import 'package:lumos/utility/model.dart';
+import 'package:lumos/model/models.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context) => SingleImageEditor(
           image: image,
           darkTheme: true,
-          background: EditorBackground.none,
+          background: EditorBackground.gradient,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
             crop: true,
@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context) => MultiImageEditor(
           images: images,
           darkTheme: true,
-          background: EditorBackground.none,
+          background: EditorBackground.gradient,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
             crop: true,

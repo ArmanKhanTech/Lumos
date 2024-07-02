@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:screenshot/screenshot.dart';
 
-import 'package:lumos/data/constants.dart';
+import 'package:lumos/utility/constants.dart';
 import 'package:lumos/widget/button/bottom_button.dart';
 
 class ImageAdjust extends StatefulWidget {
@@ -55,20 +55,17 @@ class _ImageAdjustState extends State<ImageAdjust> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              color: widget.darkTheme ? Colors.white : Colors.black,
               iconSize: 30.0,
               padding: const EdgeInsets.only(bottom: 3),
             ),
-            title: Text(
+            title: const Text(
               'Adjust',
               style: TextStyle(
                 fontSize: 20,
-                color: widget.darkTheme ? Colors.white : Colors.black,
               ),
             ),
             actions: [
               IconButton(
-                color: widget.darkTheme ? Colors.white : Colors.black,
                 icon: const Icon(Icons.check, size: 30),
                 onPressed: () async {
                   var data = await screenshotController.capture();
@@ -94,8 +91,9 @@ class _ImageAdjustState extends State<ImageAdjust> {
               ),
             ),
           ),
-          bottomNavigationBar: SizedBox(
-            height: 145,
+          bottomNavigationBar: Container(
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
+            height: 150,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

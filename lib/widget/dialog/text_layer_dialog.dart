@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lumos/editor/single_image_editor.dart';
-import 'package:lumos/utility/model.dart';
+import 'package:lumos/model/models.dart';
 
 import '../picker/color_picker.dart';
 
@@ -37,7 +37,7 @@ class _TextLayerDialogState extends State<TextLayerDialog> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 435,
+      height: 425,
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [

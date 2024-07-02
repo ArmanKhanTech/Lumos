@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:lumos/utility/model.dart';
+import 'package:lumos/model/models.dart';
 
 import '../../data/emojies.dart';
 

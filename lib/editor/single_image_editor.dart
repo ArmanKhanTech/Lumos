@@ -19,9 +19,9 @@ import 'package:lumos/layer/text_layer.dart';
 import 'package:lumos/widget/picker/emoji_picker.dart';
 import 'package:lumos/widget/picker/color_picker.dart';
 import 'package:lumos/tool/text_editor.dart';
-import 'package:lumos/utility/model.dart';
+import 'package:lumos/model/models.dart';
 import 'package:lumos/widget/screen/loading_screen.dart';
-import 'package:lumos/data/constants.dart';
+import 'package:lumos/utility/constants.dart';
 import 'package:lumos/tool/image_filters.dart';
 import 'package:lumos/widget/button/bottom_button.dart';
 
@@ -90,8 +90,14 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
   @override
   void initState() {
     super.initState();
+
     if (widget.image != null) {
       loadImage(widget.image!);
+    }
+
+    if (widget.background == EditorBackground.gradient) {
+      topLeftColor = widget.darkTheme ? Colors.black : Colors.white;
+      bottomRightColor = widget.darkTheme ? Colors.black : Colors.white;
     }
   }
 
@@ -100,6 +106,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
     layers.clear();
     undoLayers.clear();
     removedLayers.clear();
+
     super.dispose();
   }
 
@@ -117,6 +124,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
     scaleFactor = 1;
     x = 0;
     y = 0;
+
     setState(() {});
   }
 
@@ -186,7 +194,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
         canPop: false,
         onPopInvoked: (onPopInvoked) async {
           if (onPopInvoked) return;
-          return await exitDialog(context);
+          return await exitDialog(context, widget.darkTheme);
         },
         child: Theme(
           data: widget.darkTheme ? Constants.darkTheme : Constants.lightTheme,
@@ -197,19 +205,15 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
-                  exitDialog(context);
+                  exitDialog(context, widget.darkTheme);
                 },
                 iconSize: 30.0,
-                color: widget.darkTheme ? Colors.white : Colors.black,
                 padding: const EdgeInsets.only(bottom: 3),
               ),
-              title: Text(
+              title: const Text(
                 'Edit',
-                style: TextStyle(
-                    color: widget.darkTheme ? Colors.white : Colors.black,
-                    fontSize: 20),
+                style: TextStyle(fontSize: 20),
               ),
-              iconTheme: const IconThemeData(color: Colors.white),
               actions: [
                 IconButton(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -256,12 +260,11 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                 ),
                 const SizedBox(width: 10),
                 IconButton(
-                  icon: Icon(Icons.done,
-                      color: widget.darkTheme ? Colors.white : Colors.black,
-                      size: 30),
+                  icon: const Icon(Icons.done, size: 30),
                   onPressed: () async {
                     resetTransformation();
                     setState(() {});
+
                     LoadingScreen(scaffoldGlobalKey, widget.darkTheme).show();
                     var binaryIntList = await screenshotController.capture(
                         pixelRatio: pixelRatio);
@@ -284,7 +287,6 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                               fit: BoxFit.cover,
                             )
                           : null,
-                      color: widget.darkTheme ? Colors.black : Colors.white,
                     ),
                     child: Stack(
                       children: [
@@ -325,7 +327,6 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                                 ),
                               )
                             : const SizedBox(),
-                        // TODO: Fix size
                         Center(
                           child: SizedBox(
                               width: currentImage.width / pixelRatio,
@@ -367,10 +368,10 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                     context, widget.darkTheme ? Colors.white : Colors.black),
             bottomNavigationBar: Container(
               alignment: Alignment.bottomCenter,
-              height: 75,
-              padding: const EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(
-                color: widget.darkTheme ? Colors.black : Colors.white,
+              height: 80,
+              padding: const EdgeInsets.only(
+                  top: 15, left: 10, right: 10, bottom: 5),
+              decoration: const BoxDecoration(
                 shape: BoxShape.rectangle,
               ),
               child: SafeArea(

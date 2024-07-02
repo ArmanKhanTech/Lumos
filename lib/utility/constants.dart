@@ -23,16 +23,17 @@ class Constants {
       color: lightBG,
     ),
     appBarTheme: const AppBarTheme(
-      elevation: 0.0,
-      backgroundColor: lightBG,
-      iconTheme: IconThemeData(color: Colors.black),
-      systemOverlayStyle: SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.white,
-        systemNavigationBarIconBrightness: Brightness.dark,
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    ),
+        elevation: 0.0,
+        backgroundColor: lightBG,
+        iconTheme: IconThemeData(color: Colors.black),
+        titleTextStyle: TextStyle(color: Colors.black),
+        systemOverlayStyle: SystemUiOverlayStyle(
+          systemNavigationBarColor: Colors.white,
+          systemNavigationBarIconBrightness: Brightness.dark,
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+        ),
+        actionsIconTheme: IconThemeData(color: Colors.black)),
     colorScheme: ColorScheme.fromSwatch()
         .copyWith(
           secondary: lightAccent,
@@ -42,6 +43,7 @@ class Constants {
 
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: darkBG,
+    primaryColor: Colors.white,
     bottomAppBarTheme: const BottomAppBarTheme(
       elevation: 0,
       color: darkBG,
@@ -56,6 +58,7 @@ class Constants {
           statusBarColor: Colors.black,
           statusBarIconBrightness: Brightness.light,
         ),
+        titleTextStyle: TextStyle(color: Colors.white),
         actionsIconTheme: IconThemeData(
           color: Colors.white,
         )),

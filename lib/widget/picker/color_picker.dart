@@ -38,17 +38,19 @@ class BarColorPicker extends StatefulWidget {
   });
 
   @override
-  createState() => _BarColorPickerState();
+  State<BarColorPicker> createState() => _BarColorPickerState();
 }
 
 class _BarColorPickerState extends State<BarColorPicker> {
-  double percent = 0.0;
   late List<Color> colors;
+
+  double percent = 0.0;
   late double barWidth, barHeight;
 
   @override
   void initState() {
     super.initState();
+
     if (widget.horizontal) {
       barWidth = widget.width;
       barHeight = widget.thumbRadius * 2 - kBarPadding;
@@ -73,6 +75,7 @@ class _BarColorPickerState extends State<BarColorPicker> {
         colors = const [Color(0xff000000), Color(0xffffffff)];
         break;
     }
+
     percent = HSVColor.fromColor(widget.initialColor).hue / 360;
   }
 
@@ -205,9 +208,7 @@ class CircleColorPicker extends StatefulWidget {
   });
 
   @override
-  State<CircleColorPicker> createState() {
-    return _CircleColorPickerState();
-  }
+  State<CircleColorPicker> createState() => _CircleColorPickerState();
 }
 
 class _CircleColorPickerState extends State<CircleColorPicker> {

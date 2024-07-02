@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 
-import 'package:lumos/data/constants.dart';
+import 'package:lumos/utility/constants.dart';
 import 'package:lumos/editor/single_image_editor.dart';
 import 'package:lumos/utility/image_item.dart';
-import 'package:lumos/utility/model.dart';
+import 'package:lumos/model/models.dart';
 import 'package:lumos/widget/dialog/exit_dialog.dart';
 import 'package:lumos/widget/indicator/progress_indicator.dart';
 
@@ -75,12 +75,15 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
   @override
   void initState() {
     super.initState();
+
     images =
         widget.images.map((e) => ImageItem(e, widget.viewportSize)).toList();
     aspectRatio = aspectRatioOriginal = 1;
+
     for (int i = 0; i < images.length; i++) {
       editorKey.add(GlobalKey<ExtendedImageEditorState>());
     }
+
     Timer(const Duration(milliseconds: 1000), () {
       setState(() {});
     });
@@ -91,8 +94,10 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
     for (var key in editorKey) {
       key.currentState?.dispose();
     }
+
     images.clear();
     saveImages.clear();
+
     super.dispose();
   }
 
@@ -102,7 +107,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
         canPop: false,
         onPopInvoked: (onPopInvoked) async {
           if (onPopInvoked) return;
-          return await exitDialog(context);
+          return await exitDialog(context, widget.darkTheme);
         },
         child: Theme(
             data: widget.darkTheme ? Constants.darkTheme : Constants.lightTheme,
@@ -112,17 +117,14 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                 leading: IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    exitDialog(context);
+                    exitDialog(context, widget.darkTheme);
                   },
                   iconSize: 30.0,
-                  color: widget.darkTheme ? Colors.white : Colors.black,
                   padding: const EdgeInsets.only(bottom: 3),
                 ),
-                title: Text(
+                title: const Text(
                   'Customize',
-                  style: TextStyle(
-                      color: widget.darkTheme ? Colors.white : Colors.black,
-                      fontSize: 20),
+                  style: TextStyle(fontSize: 20),
                 ),
                 actions: [
                   widget.features.crop
@@ -132,17 +134,11 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                             crop = !crop;
                             setState(() {});
                           },
-                          icon: Icon(Icons.crop,
-                              color: widget.darkTheme
-                                  ? Colors.white
-                                  : Colors.black,
-                              size: 30))
+                          icon: const Icon(Icons.crop, size: 30))
                       : const SizedBox(),
                   const SizedBox(width: 10),
                   IconButton(
-                    icon: Icon(Icons.done,
-                        color: widget.darkTheme ? Colors.white : Colors.black,
-                        size: 30),
+                    icon: const Icon(Icons.done, size: 30),
                     onPressed: () async {
                       for (int i = 0; i < images.length; i++) {
                         final Uint8List? result =
@@ -377,7 +373,8 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                 ),
               ),
               bottomNavigationBar: crop
-                  ? SafeArea(
+                  ? Container(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: SizedBox(
                         height: 80,
                         child: Column(
@@ -460,7 +457,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
         setState(() {});
       },
       child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
             title,
             style: TextStyle(

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 
-import 'package:lumos/data/constants.dart';
-import 'package:lumos/utility/model.dart';
+import 'package:lumos/utility/constants.dart';
+import 'package:lumos/model/models.dart';
 
 class ImageCropper extends StatefulWidget {
   final Uint8List image;
@@ -71,21 +71,17 @@ class _ImageCropperState extends State<ImageCropper> {
                 Navigator.of(context).pop();
               },
               iconSize: 30.0,
-              color: widget.darkTheme ? Colors.white : Colors.black,
               padding: const EdgeInsets.only(bottom: 3),
             ),
-            title: Text(
+            title: const Text(
               'Crop',
               style: TextStyle(
-                color: widget.darkTheme ? Colors.white : Colors.black,
                 fontSize: 20,
               ),
             ),
             actions: [
               IconButton(
-                icon: Icon(Icons.check,
-                    size: 30,
-                    color: widget.darkTheme ? Colors.white : Colors.black),
+                icon: const Icon(Icons.check, size: 30),
                 onPressed: () async {
                   var state = controller.currentState;
                   if (state == null) {
@@ -117,7 +113,8 @@ class _ImageCropperState extends State<ImageCropper> {
               },
             ),
           ),
-          bottomNavigationBar: SafeArea(
+          bottomNavigationBar: Container(
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: SizedBox(
               height: 80,
               child: Column(
@@ -240,7 +237,7 @@ class _ImageCropperState extends State<ImageCropper> {
         setState(() {});
       },
       child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
             title,
             style: TextStyle(

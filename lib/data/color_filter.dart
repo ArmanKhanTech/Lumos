@@ -1,6 +1,6 @@
 import 'dart:math';
 
-class ColorFilterGenerator {
+class ColorFilter {
   static List<double> hueAdjustMatrix({required double value}) {
     value = value * pi;
 
