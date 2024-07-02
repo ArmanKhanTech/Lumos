@@ -1,6 +1,6 @@
 name: lumos
 description: "Easily integrate powerful image editing capabilities into your Flutter applications with Lumos."
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/ArmanKhanTech/Lumos
 
 environment:
