@@ -15,13 +15,10 @@
 
   <h3 align="center">Lumos</h3>
   <p align="center">Status: Ongoing</p>
+  <p align="center">A Flutter image editor package.</p>
 
   <p align="center">
-    A Flutter image editor package.
-    <br />
-    <br />
     <a href="https://github.com/ArmanKhanTech/Lumos"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
     <a href="https://github.com/ArmanKhanTech/Lumos/issues">Report a Bug</a>
     ·
