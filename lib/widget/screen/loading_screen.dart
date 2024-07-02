@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lumos/widget/indicator/progress_indicator.dart';
 
 class LoadingScreen {
   final GlobalKey globalKey;
@@ -25,9 +24,8 @@ class LoadingScreen {
         builder: (BuildContext context) => Scaffold(
               backgroundColor: darkTheme ? Colors.black : Colors.white,
               body: Center(
-                child: circularProgress(
-                  context,
-                  darkTheme ? Colors.white : Colors.black,
+                child: CircularProgressIndicator(
+                  color: darkTheme ? Colors.white : Colors.black,
                 ),
               ),
             ));

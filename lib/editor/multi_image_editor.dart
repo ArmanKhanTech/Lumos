@@ -12,7 +12,6 @@ import 'package:lumos/editor/single_image_editor.dart';
 import 'package:lumos/utility/image_item.dart';
 import 'package:lumos/model/models.dart';
 import 'package:lumos/widget/dialog/exit_dialog.dart';
-import 'package:lumos/widget/indicator/progress_indicator.dart';
 
 import '../tool/image_filters.dart';
 
@@ -277,13 +276,15 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                                                           errorBuilder:
                                                               (context, error,
                                                                   stackTrace) {
-                                                            return circularProgress(
-                                                                context,
-                                                                widget.darkTheme
-                                                                    ? Colors
-                                                                        .white
-                                                                    : Colors
-                                                                        .black);
+                                                            return Center(
+                                                                child:
+                                                                    CircularProgressIndicator(
+                                                              color: widget
+                                                                      .darkTheme
+                                                                  ? Colors.white
+                                                                  : Colors
+                                                                      .black,
+                                                            ));
                                                           },
                                                         )),
                                                   )),

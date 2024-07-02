@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_pixels/image_pixels.dart';
-import 'package:lumos/widget/indicator/progress_indicator.dart';
 import 'package:screenshot/screenshot.dart';
 
 import 'package:lumos/utility/image_item.dart';
@@ -364,8 +363,10 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                         ),
                       ],
                     ))
-                : circularProgress(
-                    context, widget.darkTheme ? Colors.white : Colors.black),
+                : Center(
+                    child: CircularProgressIndicator(
+                    color: widget.darkTheme ? Colors.white : Colors.black,
+                  )),
             bottomNavigationBar: Container(
               alignment: Alignment.bottomCenter,
               height: 80,
