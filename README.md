@@ -59,6 +59,8 @@ Easily integrate powerful image editing capabilities into your Flutter applicati
 <li>Undo and redo changes seamlessly.</li>
 <br />
 
+<a href="https://github.com/ArmanKhanTech/Lumos/releases/tag/0.0.4"><b>Get the demo app</b></a>
+
 **Supports Android & iOS only. Soon on web too.**
 
 
