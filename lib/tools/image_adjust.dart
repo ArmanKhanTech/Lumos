@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:screenshot/screenshot.dart';
 
-import 'package:lumos/utility/constants.dart';
-import 'package:lumos/widget/button/bottom_button.dart';
+import 'package:lumos/utilities/constants.dart';
+import 'package:lumos/widgets/button/bottom_button.dart';
 
 class ImageAdjust extends StatefulWidget {
   final Uint8List image;

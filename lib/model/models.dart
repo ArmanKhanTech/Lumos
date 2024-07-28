@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lumos/utility/image_item.dart';
+import 'package:lumos/utilities/image_item.dart';
 
 class AspectRatioOption {
   final String title;

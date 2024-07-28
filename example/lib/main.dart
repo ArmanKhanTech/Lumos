@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:lumos/utility/constants.dart';
+import 'package:lumos/utilities/constants.dart';
 import 'package:lumos/lumos.dart';
 import 'package:lumos/model/models.dart';
 
@@ -157,11 +157,19 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 20),
             if (editedImage != null)
-              Image.memory(
-                editedImage!,
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 4,
-                fit: BoxFit.cover,
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.memory(
+                    editedImage!,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 4,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             if (editedImages != null)
               ListView.builder(
@@ -169,12 +177,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 shrinkWrap: true,
                 itemCount: editedImages!.length,
                 itemBuilder: (context, index) {
-                  return Image.memory(
-                    editedImages![index],
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  );
+                  return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: const EdgeInsets.only(bottom: 20),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.memory(
+                          editedImages![index],
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height / 4,
+                          fit: BoxFit.cover,
+                        ),
+                      ));
                 },
               ),
           ],

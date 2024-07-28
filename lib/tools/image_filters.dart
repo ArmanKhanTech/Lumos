@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 import 'package:screenshot/screenshot.dart';
 
-import 'package:lumos/utility/constants.dart';
+import 'package:lumos/utilities/constants.dart';
 
 class ImageFilters extends StatefulWidget {
   final Uint8List image;

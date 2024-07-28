@@ -1,10 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 
-import 'package:lumos/utility/constants.dart';
+import 'package:lumos/utilities/constants.dart';
 import 'package:lumos/model/models.dart';
 
-import '../widget/picker/color_picker.dart';
+import '../widgets/picker/color_picker.dart';
 
 class TextEditor extends StatefulWidget {
   final bool darkTheme;

@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 
-import 'package:lumos/utility/constants.dart';
+import 'package:lumos/utilities/constants.dart';
 import 'package:lumos/editor/single_image_editor.dart';
-import 'package:lumos/utility/image_item.dart';
+import 'package:lumos/utilities/image_item.dart';
 import 'package:lumos/model/models.dart';
-import 'package:lumos/widget/dialog/exit_dialog.dart';
+import 'package:lumos/widgets/dialog/exit_dialog.dart';
 
-import '../tool/image_filters.dart';
+import '../tools/image_filters.dart';
 
 class MultiImageEditor extends StatefulWidget {
   final List<dynamic> images;
@@ -139,16 +139,22 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                   IconButton(
                     icon: const Icon(Icons.done, size: 30),
                     onPressed: () async {
-                      for (int i = 0; i < images.length; i++) {
-                        final Uint8List? result =
-                            await cropImageDataWithNativeLibrary(
-                          state: editorKey[i].currentState!,
-                        );
+                      if (crop) {
+                        for (int i = 0; i < images.length; i++) {
+                          final Uint8List? result =
+                              await cropImageDataWithNativeLibrary(
+                            state: editorKey[i].currentState!,
+                          );
 
-                        if (result == null) {
-                          return;
-                        } else {
-                          saveImages.add(result);
+                          if (result == null) {
+                            return;
+                          } else {
+                            saveImages.add(result);
+                          }
+                        }
+                      } else {
+                        for (var image in images) {
+                          saveImages.add(image.image);
                         }
                       }
 

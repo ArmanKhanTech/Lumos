@@ -9,23 +9,23 @@ import 'package:flutter/services.dart';
 import 'package:image_pixels/image_pixels.dart';
 import 'package:screenshot/screenshot.dart';
 
-import 'package:lumos/utility/image_item.dart';
-import 'package:lumos/widget/dialog/exit_dialog.dart';
-import 'package:lumos/layer/background_blur_layer.dart';
-import 'package:lumos/layer/background_layer.dart';
-import 'package:lumos/layer/emoji_layer.dart';
-import 'package:lumos/layer/text_layer.dart';
-import 'package:lumos/widget/picker/emoji_picker.dart';
-import 'package:lumos/widget/picker/color_picker.dart';
-import 'package:lumos/tool/text_editor.dart';
+import 'package:lumos/utilities/image_item.dart';
+import 'package:lumos/widgets/dialog/exit_dialog.dart';
+import 'package:lumos/layers/background_blur_layer.dart';
+import 'package:lumos/layers/background_layer.dart';
+import 'package:lumos/layers/emoji_layer.dart';
+import 'package:lumos/layers/text_layer.dart';
+import 'package:lumos/widgets/picker/emoji_picker.dart';
+import 'package:lumos/widgets/picker/color_picker.dart';
+import 'package:lumos/tools/text_editor.dart';
 import 'package:lumos/model/models.dart';
-import 'package:lumos/widget/screen/loading_screen.dart';
-import 'package:lumos/utility/constants.dart';
-import 'package:lumos/tool/image_filters.dart';
-import 'package:lumos/widget/button/bottom_button.dart';
+import 'package:lumos/widgets/screen/loading_screen.dart';
+import 'package:lumos/utilities/constants.dart';
+import 'package:lumos/tools/image_filters.dart';
+import 'package:lumos/widgets/button/bottom_button.dart';
 
-import '../tool/image_adjust.dart';
-import '../tool/image_cropper.dart';
+import '../tools/image_adjust.dart';
+import '../tools/image_cropper.dart';
 
 List<Layer> layers = [], undoLayers = [], removedLayers = [];
 

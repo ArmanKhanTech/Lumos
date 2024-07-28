@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lumos/editor/single_image_editor.dart';
 import 'package:lumos/model/models.dart';
 
-import '../widget/dialog/emoji_layer_dialog.dart';
+import '../widgets/dialog/emoji_layer_dialog.dart';
 
 class EmojiLayer extends StatefulWidget {
   final EmojiLayerData layerData;

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 
-import 'package:lumos/utility/constants.dart';
+import 'package:lumos/utilities/constants.dart';
 import 'package:lumos/model/models.dart';
 
 class ImageCropper extends StatefulWidget {
