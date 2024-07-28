@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:image_editor/image_editor.dart';
 
 import 'package:lumos/utilities/constants.dart';
-import 'package:lumos/editor/single_image_editor.dart';
+import 'package:lumos/editors/single_image_editor.dart';
 import 'package:lumos/utilities/image_item.dart';
 import 'package:lumos/model/models.dart';
 import 'package:lumos/widgets/dialog/exit_dialog.dart';

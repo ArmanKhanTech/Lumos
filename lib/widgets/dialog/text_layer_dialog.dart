@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:lumos/editor/single_image_editor.dart';
+import 'package:lumos/editors/single_image_editor.dart';
 import 'package:lumos/model/models.dart';
 
 import '../picker/color_picker.dart';
