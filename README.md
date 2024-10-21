@@ -14,7 +14,7 @@
   </a>
 
   <h3 align="center">Lumos</h3>
-  <p align="center">Status: Ongoing</p>
+  <p align="center">Status: Completed</p>
   <p align="center">A Flutter image editor package.</p>
 
   <p align="center">
