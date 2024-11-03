@@ -1,5 +1,11 @@
 import 'dart:math';
 
+/// A class that provides methods for creating color transformation matrices
+/// for adjusting hue, brightness, and saturation of images.
+///
+/// This class contains static methods that generate matrices to be used in
+/// image processing. The matrices can be applied to pixels to achieve the
+/// desired visual effects.
 class ColorFilter {
   static List<double> hueAdjustMatrix({required double value}) {
     value = value * pi;

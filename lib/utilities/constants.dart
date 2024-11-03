@@ -7,6 +7,15 @@ enum EditorBackground {
   blur,
 }
 
+/// The [Constants] class contains color constants for light and dark themes, including
+/// primary and accent colors, as well as background colors for both themes.
+///
+/// It provides two [ThemeData] instances:
+/// - [lightTheme]: Configured for a light user interface with appropriate colors and styles.
+/// - [darkTheme]: Configured for a dark user interface, featuring contrasting colors for visibility.
+///
+/// Additionally, an enumeration [EditorBackground] is defined to specify the background types
+/// available for editors, such as no background, gradient background, or blurred background.
 class Constants {
   static const Color lightPrimary = Color.fromARGB(255, 255, 255, 255);
   static const Color darkPrimary = Color.fromARGB(255, 0, 0, 0);

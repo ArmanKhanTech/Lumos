@@ -9,6 +9,15 @@ import 'package:screenshot/screenshot.dart';
 import 'package:lumos/utilities/constants.dart';
 import 'package:lumos/widgets/button/bottom_button.dart';
 
+/// The [ImageAdjust] widget provides a UI for modifying an image using sliders
+/// for brightness, contrast, and saturation adjustments. It applies a [ColorFilter]
+/// to preview changes in real-time and allows users to capture the adjusted image.
+///
+/// - The [image] parameter supplies the image to be adjusted.
+/// - The [darkTheme] boolean toggles between dark and light themes for the UI.
+///
+/// This widget also includes a bottom navigation bar with buttons to switch between
+/// adjustments and a save button to confirm changes.
 class ImageAdjust extends StatefulWidget {
   final Uint8List image;
 

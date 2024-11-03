@@ -5,6 +5,16 @@ import 'package:lumos/model/models.dart';
 
 import '../widgets/dialog/emoji_layer_dialog.dart';
 
+/// The [EmojiLayer] widget allows users to position, scale, and rotate an emoji
+/// overlay on an image. Tapping on the emoji opens a customization dialog, where
+/// users can adjust properties like the text or size through [EmojiLayerDialog].
+///
+/// The [layerData] contains properties of the emoji, including position, size, and
+/// rotation. It supports both light and dark themes, allowing for adaptive dialog
+/// background colors.
+///
+/// The [onUpdate] callback is invoked when modifications occur, providing
+/// additional control for external actions on update.
 class EmojiLayer extends StatefulWidget {
   final EmojiLayerData layerData;
 

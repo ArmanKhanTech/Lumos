@@ -15,6 +15,7 @@ import 'package:lumos/widgets/dialog/exit_dialog.dart';
 
 import '../tools/image_filters.dart';
 
+// Class for editing multiple images.
 class MultiImageEditor extends StatefulWidget {
   final List<dynamic> images;
   final List<AspectRatioOption> cropAvailableRatios;
@@ -104,8 +105,8 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
   Widget build(BuildContext context) {
     return PopScope(
         canPop: false,
-        onPopInvoked: (onPopInvoked) async {
-          if (onPopInvoked) return;
+        onPopInvokedWithResult: (bool didPop, Object? result) async {
+          if (didPop) return;
           return await exitDialog(context, widget.darkTheme);
         },
         child: Theme(

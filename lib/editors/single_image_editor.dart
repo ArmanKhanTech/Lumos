@@ -29,6 +29,7 @@ import '../tools/image_cropper.dart';
 
 List<Layer> layers = [], undoLayers = [], removedLayers = [];
 
+// Class for editing single image.
 class SingleImageEditor extends StatefulWidget {
   final dynamic image;
 
@@ -191,8 +192,8 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
 
     return PopScope(
         canPop: false,
-        onPopInvoked: (onPopInvoked) async {
-          if (onPopInvoked) return;
+        onPopInvokedWithResult: (bool didPop, Object? result) async {
+          if (didPop) return;
           return await exitDialog(context, widget.darkTheme);
         },
         child: Theme(

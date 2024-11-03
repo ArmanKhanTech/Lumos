@@ -1,5 +1,7 @@
 Map<String, String> emojiWeights = {};
 
+// List of all available emojies that can be added
+// to the images.
 List<String> emojis = [
   '😀',
   '😁',

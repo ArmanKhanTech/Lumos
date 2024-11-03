@@ -8,6 +8,13 @@ import 'package:screenshot/screenshot.dart';
 
 import 'package:lumos/utilities/constants.dart';
 
+/// The [ImageFilters] widget allows users to preview and select from a range of preset filters
+/// to enhance their images. The selected filter can be applied with varying opacity using a slider,
+/// and users can capture the final filtered image.
+///
+/// - The [image] parameter provides the base image for editing.
+/// - [useCache] determines if caching should be applied to improve performance.
+/// - The [darkTheme] parameter enables theme customization for a cohesive UI experience.
 class ImageFilters extends StatefulWidget {
   final Uint8List image;
 

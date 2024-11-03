@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lumos/model/models.dart';
 
+/// The [BackgroundLayer] widget takes in a [BackgroundLayerData] model that
+/// provides image file data, including width and height, to render the background
+/// image. This layer can be used as a backdrop for other editing elements in an
+/// image editor, utilizing the specified dimensions.
+///
+/// The [onUpdate] callback allows for custom actions to be triggered when the
+/// widget updates.
 class BackgroundLayer extends StatefulWidget {
   final BackgroundLayerData layerData;
   final VoidCallback? onUpdate;

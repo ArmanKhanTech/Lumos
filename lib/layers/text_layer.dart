@@ -4,6 +4,13 @@ import 'package:lumos/editors/single_image_editor.dart';
 import 'package:lumos/model/models.dart';
 import 'package:lumos/widgets/dialog/text_layer_dialog.dart';
 
+/// The [TextLayer] widget allows users to add, position, scale, and rotate text on
+/// an image. Tapping the text opens a dialog ([TextLayerDialog]) for further customization,
+/// including color, alignment, and background adjustments.
+///
+/// The [layerData] provides properties for the text layer, such as text content,
+/// font size, color, position, and rotation. The widget supports both light and dark
+/// themes, and the [onUpdate] callback can be used to trigger actions on update events.
 class TextLayer extends StatefulWidget {
   final TextLayerData layerData;
 

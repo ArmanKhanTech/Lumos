@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:lumos/utilities/image_item.dart';
 
+/// Model classes for image editing features used within the plugin.
+///
+/// This library includes several classes representing various types of layers and
+/// editing features for an image editor. Each layer, such as background, emoji, text,
+/// or blur, extends the base [Layer] class and carries properties specific to its
+/// type, including position, rotation, scale, and opacity.
+///
+/// - [AspectRatioOption]: Defines options for aspect ratio selection with a title
+///   and optional ratio value.
+/// - [ImageEditorFeatures]: Flags to toggle various editing features, such as crop,
+///   text, adjust, and filters.
+/// - [Layer]: A base class for editable layers, with position, rotation, scale, and
+///   opacity.
+/// - Specific layer data classes (e.g., [BackgroundLayerData], [EmojiLayerData],
+///   [TextLayerData]) extend [Layer] to represent unique properties for each type.
 class AspectRatioOption {
   final String title;
   final double? ratio;

@@ -7,6 +7,14 @@ import 'package:image_editor/image_editor.dart';
 import 'package:lumos/utilities/constants.dart';
 import 'package:lumos/model/models.dart';
 
+/// The [ImageCropper] widget provides an interactive UI for users to crop and rotate
+/// images, supporting various predefined aspect ratios (e.g., 1:1, 4:3, 16:9) and custom options.
+/// Users can switch between landscape and portrait orientations for aspect ratios and apply
+/// the changes before saving.
+///
+/// - The [image] parameter supplies the image to be cropped.
+/// - The [availableRatios] list defines preset aspect ratios for cropping.
+/// - The [darkTheme] parameter toggles between dark and light themes for the UI.
 class ImageCropper extends StatefulWidget {
   final Uint8List image;
 
