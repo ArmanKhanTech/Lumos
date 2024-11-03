@@ -14,7 +14,7 @@
   </a>
 
   <h3 align="center">Lumos</h3>
-  <p align="center">Status: Ongoing</p>
+  <p align="center">Status: Completed</p>
   <p align="center">A Flutter image editor package.</p>
 
   <p align="center">
@@ -47,7 +47,7 @@
 
 Easily integrate powerful image editing capabilities into your Flutter applications with Lumos. This package empowers developers to seamlessly incorporate features like crop, rotate, flip, filters, and more directly into their apps, providing users with robust tools to enhance and customize images on the fly. Whether you're building a photo-sharing app, an e-commerce platform, or a creative tool, the Flutter Image Editor offers a versatile solution with an intuitive interface and efficient performance. Take control of image manipulation in your Flutter projects and elevate user experience with this flexible and easy-to-use package.
 
-<b>Key Features:</b>
+### Features
 
 <li>Crop, rotate, and flip images.</li>
 <li>Apply filters and effects in real-time.</li>
