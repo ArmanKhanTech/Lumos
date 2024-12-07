@@ -18,3 +18,8 @@
 
 * Documentation Added
 * Fixed Deprecated Warnings
+
+## 0.0.6
+
+* Fixed deprecated APIs
+* More Documentation Added
