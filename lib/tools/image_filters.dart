@@ -11,15 +11,18 @@ import 'package:lumos/utilities/constants.dart';
 /// The [ImageFilters] widget allows users to preview and select from a range of preset filters
 /// to enhance their images. The selected filter can be applied with varying opacity using a slider,
 /// and users can capture the final filtered image.
-///
+
 /// - The [image] parameter provides the base image for editing.
 /// - [useCache] determines if caching should be applied to improve performance.
 /// - The [darkTheme] parameter enables theme customization for a cohesive UI experience.
 class ImageFilters extends StatefulWidget {
+  /// The image to be filtered.
   final Uint8List image;
 
+  /// A boolean to toggle between dark and light themes.
   final bool useCache, darkTheme;
 
+  /// Creates a [ImageFilters] widget.
   const ImageFilters({
     super.key,
     required this.image,
@@ -190,17 +193,24 @@ class _ImageFiltersState extends State<ImageFilters> {
   }
 }
 
+/// The [FilterAppliedImage] widget applies a filter to an image and displays the result.
 class FilterAppliedImage extends StatelessWidget {
+  /// The image to be filtered.
   final Uint8List image;
 
+  /// The filter to be applied to the image.
   final ColorFilterGenerator filter;
 
+  /// The fit of the image.
   final BoxFit? fit;
 
+  /// The function to be called after processing the image.
   final Function(Uint8List)? onProcess;
 
+  /// The opacity of the image.
   final double opacity;
 
+  /// Creates a [FilterAppliedImage] widget.
   FilterAppliedImage({
     super.key,
     required this.image,

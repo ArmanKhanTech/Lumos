@@ -15,19 +15,27 @@ import 'package:lumos/widgets/dialog/exit_dialog.dart';
 
 import '../tools/image_filters.dart';
 
-// Class for editing multiple images.
+/// The [MultiImageEditor] widget provides an interactive UI for users to edit multiple images
 class MultiImageEditor extends StatefulWidget {
+  /// The [images] list contains the images to be edited
   final List<dynamic> images;
+
+  /// The [cropAvailableRatios] list defines preset aspect ratios for cropping
   final List<AspectRatioOption> cropAvailableRatios;
 
+  /// The [features] parameter toggles the availability of various editing features
   final ImageEditorFeatures features;
 
+  /// The [viewportSize] parameter defines the size of the viewport
   final Size viewportSize;
 
+  /// The [darkTheme] parameter toggles between dark and light themes for the UI
   final bool darkTheme;
 
+  /// The [background] parameter defines the background configuration
   final EditorBackground background;
 
+  /// The [MultiImageEditor] constructor requires the [images], [viewportSize], [darkTheme], and [background] parameters
   const MultiImageEditor({
     super.key,
     required this.images,
@@ -486,10 +494,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
 
     final EditActionDetails action = state.editAction!;
 
-    final int rotateAngle = action.rotateAngle.toInt();
-
-    final bool flipHorizontal = action.flipY;
-    final bool flipVertical = action.flipX;
+    final double rotateAngle = action.rotateDegrees;
 
     final Uint8List img = state.rawImageData;
 
@@ -500,12 +505,11 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
     }
 
     if (action.needFlip) {
-      option.addOption(
-          FlipOption(horizontal: flipHorizontal, vertical: flipVertical));
+      option.addOption(const FlipOption(horizontal: true, vertical: true));
     }
 
-    if (action.hasRotateAngle) {
-      option.addOption(RotateOption(rotateAngle));
+    if (action.hasRotateDegrees) {
+      option.addOption(RotateOption(rotateAngle as int));
     }
 
     final Uint8List? result = await ImageEditor.editImage(

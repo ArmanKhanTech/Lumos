@@ -27,22 +27,30 @@ import 'package:lumos/widgets/button/bottom_button.dart';
 import '../tools/image_adjust.dart';
 import '../tools/image_cropper.dart';
 
+/// The [Layer] class is the base class for all layer data models.
 List<Layer> layers = [], undoLayers = [], removedLayers = [];
 
-// Class for editing single image.
+/// The [SingleImageEditor] widget provides a single image editing interface with various features
 class SingleImageEditor extends StatefulWidget {
+  /// The [image] parameter supplies the image to be edited.
   final dynamic image;
 
+  /// The [features] parameter toggles the availability of different editing features.
   final ImageEditorFeatures features;
 
+  /// The [cropAvailableRatios] list defines preset aspect ratios for cropping.
   final List<AspectRatioOption> cropAvailableRatios;
 
+  /// The [viewportSize] parameter defines the size of the viewport for the image editor.
   final Size viewportSize;
 
+  /// The [darkTheme] parameter toggles between dark and light themes for the UI.
   final bool darkTheme;
 
+  /// The [background] parameter defines the background style for the editor.
   final EditorBackground background;
 
+  /// The [SingleImageEditor] constructor requires the [image], [viewportSize], [darkTheme], and [background] parameters.
   const SingleImageEditor(
       {super.key,
       required this.image,
@@ -322,8 +330,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                                     sigmaY: 10,
                                   ),
                                   child: Container(
-                                    color: Colors.black.withOpacity(0.2),
-                                  ),
+                                      color: Colors.black.withAlpha(50)),
                                 ),
                               )
                             : const SizedBox(),

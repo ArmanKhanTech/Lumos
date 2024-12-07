@@ -11,17 +11,21 @@ import 'package:lumos/model/models.dart';
 /// images, supporting various predefined aspect ratios (e.g., 1:1, 4:3, 16:9) and custom options.
 /// Users can switch between landscape and portrait orientations for aspect ratios and apply
 /// the changes before saving.
-///
+
 /// - The [image] parameter supplies the image to be cropped.
 /// - The [availableRatios] list defines preset aspect ratios for cropping.
 /// - The [darkTheme] parameter toggles between dark and light themes for the UI.
 class ImageCropper extends StatefulWidget {
+  /// The [image] represents image to be cropped.
   final Uint8List image;
 
+  /// The [availableRatios] list defines preset aspect ratios for cropping.
   final List<AspectRatioOption> availableRatios;
 
+  /// The [darkTheme] parameter toggles between dark and light themes for the UI.
   final bool darkTheme;
 
+  /// The [ImageCropper] widget provides an interactive UI for users to crop and rotate
   const ImageCropper({
     super.key,
     required this.image,
@@ -57,7 +61,7 @@ class _ImageCropperState extends State<ImageCropper> {
     if (widget.availableRatios.isNotEmpty) {
       aspectRatio = aspectRatioOriginal = 1;
     }
-    controller.currentState?.rotate(right: true);
+    controller.currentState?.rotate();
   }
 
   @override
@@ -202,10 +206,7 @@ class _ImageCropperState extends State<ImageCropper> {
 
     final EditActionDetails action = state.editAction!;
 
-    final int rotateAngle = action.rotateAngle.toInt();
-
-    final bool flipHorizontal = action.flipY;
-    final bool flipVertical = action.flipX;
+    final double rotateAngle = action.rotateDegrees;
 
     final Uint8List img = state.rawImageData;
 
@@ -216,12 +217,11 @@ class _ImageCropperState extends State<ImageCropper> {
     }
 
     if (action.needFlip) {
-      option.addOption(
-          FlipOption(horizontal: flipHorizontal, vertical: flipVertical));
+      option.addOption(const FlipOption(horizontal: true, vertical: true));
     }
 
-    if (action.hasRotateAngle) {
-      option.addOption(RotateOption(rotateAngle));
+    if (action.hasRotateDegrees) {
+      option.addOption(RotateOption(rotateAngle as int));
     }
 
     final Uint8List? result = await ImageEditor.editImage(

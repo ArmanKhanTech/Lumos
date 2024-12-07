@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// The [EditorBackground] enumeration defines the types of backgrounds available for editors.
 enum EditorBackground {
   none,
   gradient,
@@ -9,11 +10,11 @@ enum EditorBackground {
 
 /// The [Constants] class contains color constants for light and dark themes, including
 /// primary and accent colors, as well as background colors for both themes.
-///
+
 /// It provides two [ThemeData] instances:
 /// - [lightTheme]: Configured for a light user interface with appropriate colors and styles.
 /// - [darkTheme]: Configured for a dark user interface, featuring contrasting colors for visibility.
-///
+
 /// Additionally, an enumeration [EditorBackground] is defined to specify the background types
 /// available for editors, such as no background, gradient background, or blurred background.
 class Constants {

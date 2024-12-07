@@ -7,7 +7,7 @@ import 'package:lumos/model/models.dart';
 import '../widgets/picker/color_picker.dart';
 
 /// The [TextEditor] widget allows users to input text and customize its appearance.
-///
+
 /// - The [darkTheme] parameter controls the theme of the editor, enabling a
 /// dark or light color scheme for the user interface.
 /// - Users can adjust the text size using a slider, select text color with a color picker,
@@ -15,8 +15,10 @@ import '../widgets/picker/color_picker.dart';
 /// - The edited text can be confirmed and returned as a [TextLayerData] object
 /// when the check icon is pressed.
 class TextEditor extends StatefulWidget {
+  /// A boolean to toggle between dark and light themes.
   final bool darkTheme;
 
+  /// Creates a [TextEditor] widget.
   const TextEditor({super.key, required this.darkTheme});
 
   @override

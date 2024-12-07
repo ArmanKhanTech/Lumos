@@ -85,10 +85,10 @@ packages:
     dependency: transitive
     description:
       name: extended_image
-      sha256: "69d4299043334ecece679996e47d0b0891cd8c29d8da0034868443506f1d9a78"
+      sha256: "613875dc319f17546ea07499b5f0774755709a19a36dfde812e5eda9eb7a5c8c"
       url: "https://pub.dev"
     source: hosted
-    version: "8.3.1"
+    version: "9.0.7"
   extended_image_library:
     dependency: transitive
     description:
@@ -308,10 +308,10 @@ packages:
     dependency: transitive
     description:
       name: image_pixels
-      sha256: "01ba99b6f1bf6a553df8d9cc858f55000d949bc3ccbb9af6f5d5494d304a8736"
+      sha256: "9043bf47b5856c41d41c5321ff31e5eb07cbb77fd81a18c5191ddc743ad54228"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.2"
+    version: "4.0.0"
   js:
     dependency: transitive
     description:
@@ -345,7 +345,7 @@ packages:
     source: hosted
     version: "3.0.1"
   lints:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: lints
       sha256: cbf8d4b858bb0134ef3ef87841abdf8d63bfc255c266b7bf6b39daa1085c4290
@@ -358,7 +358,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.4"
+    version: "0.0.5"
   matcher:
     dependency: transitive
     description:

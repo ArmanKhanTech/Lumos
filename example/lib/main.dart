@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context) => SingleImageEditor(
           image: image,
           darkTheme: true,
-          background: EditorBackground.gradient,
+          background: EditorBackground.blur,
           viewportSize: MediaQuery.of(context).size,
           features: const ImageEditorFeatures(
             crop: true,
