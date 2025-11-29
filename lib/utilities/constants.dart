@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -28,7 +30,7 @@ class Constants {
   static ThemeData lightTheme = ThemeData(
     primaryColor: lightPrimary,
     scaffoldBackgroundColor: lightBG,
-    bottomAppBarTheme: const BottomAppBarTheme(
+    bottomAppBarTheme: const BottomAppBarThemeData(
       elevation: 0,
       color: lightBG,
     ),
@@ -54,7 +56,7 @@ class Constants {
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: darkBG,
     primaryColor: Colors.white,
-    bottomAppBarTheme: const BottomAppBarTheme(
+    bottomAppBarTheme: const BottomAppBarThemeData(
       elevation: 0,
       color: darkBG,
     ),

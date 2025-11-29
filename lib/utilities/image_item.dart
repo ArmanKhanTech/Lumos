@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 /// viewport ratio, and the raw image data as a byte array. It also provides a [Completer] to handle the
 /// asynchronous loading of the image.
 class ImageItem {
-  // The width of the image.
+  /// The width of the image.
   int width = 300;
 
   /// The height of the image.

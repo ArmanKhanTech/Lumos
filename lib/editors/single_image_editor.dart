@@ -377,7 +377,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                   )),
             bottomNavigationBar: Container(
               alignment: Alignment.bottomCenter,
-              height: 80,
+              height: 100,
               padding: const EdgeInsets.only(
                   top: 15, left: 10, right: 10, bottom: 5),
               decoration: const BoxDecoration(

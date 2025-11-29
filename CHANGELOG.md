@@ -23,3 +23,9 @@
 
 * Fixed deprecated APIs
 * More Documentation Added
+
+## 0.0.7
+
+* Upgrade to latest stable Flutter SDK versiom
+* Fix deprecated dependancies
+* Fix warnings and errors

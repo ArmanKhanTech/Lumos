@@ -105,7 +105,7 @@ class _ImageAdjustState extends State<ImageAdjust> {
           ),
           bottomNavigationBar: Container(
             padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
-            height: 150,
+            height: 180,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
